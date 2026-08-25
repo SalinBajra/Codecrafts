@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 475 108" role="img" aria-labelledby="title desc">
+  <title id="title">Bottu Pottu Productions</title>
+  <desc id="desc">A clean film camera with a joined BP monogram and Bottu Pottu wordmark.</desc>
+  <g transform="translate(5 7)">
+    <circle cx="51" cy="25" r="18" fill="none" stroke="#161411" stroke-width="4"/>
+    <circle cx="88" cy="29" r="14" fill="none" stroke="#161411" stroke-width="4"/>
+    <rect x="34" y="43" width="74" height="49" rx="5" fill="#161411"/>
+    <path d="M28 53 7 46v42l21-8Z" fill="#161411" stroke="#161411" stroke-linejoin="round"/>
+    <rect x="111" y="55" width="9" height="24" rx="2" fill="#161411"/>
+    <path d="M48 53v26M48 67c0-8 17-8 17 0s-17 8-17 0m17 0c0-8 17-8 17 0s-17 8-17 0m17 0v17" fill="none" stroke="#f7eddd" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g transform="translate(137 11)">
+    <text x="0" y="50" fill="#161411" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="800" letter-spacing="-2.5">Bottu Pottu</text>
+    <text x="2" y="77" fill="#161411" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800" letter-spacing="5.8">PRODUCTIONS</text>
+  </g>
+</svg>
