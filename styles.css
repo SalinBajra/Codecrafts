@@ -415,3 +415,9 @@ html[data-theme="dark"] .theme-toggle:before{background:repeating-linear-gradien
   .menu[aria-expanded="true"] span:first-child{top:20px;transform:rotate(45deg)}
   .menu[aria-expanded="true"] span:last-child{bottom:20px;transform:rotate(-45deg)}
 }
+
+/* Keep the outlined footer signature fully inside its clipping boundary. */
+footer:after{line-height:1;bottom:26px}
+@media(max-width:720px){
+  footer:after{margin-bottom:0;line-height:1}
+}
