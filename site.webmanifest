@@ -1,0 +1,12 @@
+{
+  "name": "CodeCrafts",
+  "short_name": "CodeCrafts",
+  "description": "Web design and development studio based in Nepal.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f5f2",
+  "theme_color": "#f6f5f2",
+  "icons": [
+    {"src": "/assets/codecrafts-favicon.png", "sizes": "256x256", "type": "image/png"}
+  ]
+}

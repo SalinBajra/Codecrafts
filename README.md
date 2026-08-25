@@ -4,6 +4,8 @@ A production-focused studio website built to clarify the offer, prove capability
 
 The homepage includes a responsive project stack, persistent light/dark themes, reduced-motion support, and a lightweight Three.js visual layer. Project details live on the Work page; the homepage uses the three verified screenshots only as a visual entry point.
 
+The site includes page-specific titles and descriptions, canonical URLs, Open Graph/Twitter metadata, Organization and WebSite structured data, a social preview image, `robots.txt`, `sitemap.xml`, and a web manifest. Canonical and sitemap URLs currently use the production Vercel domain and should be updated together if a custom domain becomes primary.
+
 ## Preview
 
 Run `powershell -ExecutionPolicy Bypass -File .\local-preview.ps1`, then open `http://localhost:4174`.

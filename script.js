@@ -3,7 +3,7 @@ const nav = document.querySelector('#nav');
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const footerCopy = document.querySelector('footer > p');
 if (footerCopy) {
-  footerCopy.innerHTML = '<strong>Direct from idea to launch.</strong><span>Strategy, design and development stay with the same small team.</span><a href="mailto:hello@codecrafts.studio">hello@codecrafts.studio <b aria-hidden="true">↗</b></a><small>Based in Nepal · working worldwide</small>';
+  footerCopy.innerHTML = '<strong>Clear thinking. Distinct websites.</strong><span>Strategy, design and development with one accountable team in Nepal.</span><a href="mailto:hello@codecrafts.studio">hello@codecrafts.studio <b aria-hidden="true">↗</b></a><small>Based in Nepal · working worldwide</small>';
 }
 
 const progress = document.createElement('div');
@@ -115,7 +115,7 @@ document.querySelectorAll('[data-year]').forEach((node) => { node.textContent = 
 const goal = new URLSearchParams(location.search).get('goal');
 const serviceSelect = document.querySelector('select[name="service"]');
 if (goal && serviceSelect) {
-  const goalServices = { clarity: 'Website strategy & design', enquiries: 'Complete website', commerce: 'E-commerce' };
+  const goalServices = { review: 'Website clarity review', clarity: 'Website direction', credibility: 'Complete website', action: 'Complete website', enquiries: 'Complete website', commerce: 'E-commerce' };
   if (goalServices[goal]) serviceSelect.value = goalServices[goal];
 }
 
