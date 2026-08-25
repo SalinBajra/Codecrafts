@@ -85,14 +85,17 @@ if (nav) {
 }
 
 if (menu && nav) {
-  const closeMenu = () => {
-    menu.setAttribute('aria-expanded', 'false');
-    nav.classList.remove('open');
+  const setMenuState = (open) => {
+    const isMobile = innerWidth <= 720;
+    const isOpen = isMobile && open;
+    menu.setAttribute('aria-expanded', String(isOpen));
+    nav.classList.toggle('open', isOpen);
+    nav.inert = isMobile && !isOpen;
   };
+  const closeMenu = () => setMenuState(false);
   menu.addEventListener('click', () => {
     const open = menu.getAttribute('aria-expanded') === 'true';
-    menu.setAttribute('aria-expanded', String(!open));
-    nav.classList.toggle('open', !open);
+    setMenuState(!open);
   });
   nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
   addEventListener('keydown', (event) => {
@@ -102,8 +105,9 @@ if (menu && nav) {
     }
   });
   addEventListener('resize', () => {
-    if (innerWidth > 720) closeMenu();
+    setMenuState(false);
   }, { passive: true });
+  closeMenu();
 }
 
 document.querySelectorAll('[data-year]').forEach((node) => { node.textContent = new Date().getFullYear(); });
