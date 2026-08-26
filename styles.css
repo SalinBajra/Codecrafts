@@ -495,6 +495,11 @@ html[data-theme="dark"] .contact-form select:-webkit-autofill{-webkit-text-fill-
   .client-rail{margin-top:-72px;margin-bottom:54px}
 }
 
+@media(min-width:1200px){
+  .project-image,.project-meta{width:min(100%,1280px)}
+  .project:nth-child(even) .project-image,.project:nth-child(even) .project-meta{margin-left:auto}
+}
+
 /* Service FAQ: concise, native and usable without JavaScript. */
 .faq{padding:28px 0 120px;display:grid;grid-template-columns:minmax(280px,.68fr) minmax(480px,1.32fr);gap:clamp(48px,8vw,130px);align-items:start}
 .faq-intro{position:sticky;top:120px}

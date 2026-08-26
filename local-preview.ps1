@@ -27,6 +27,9 @@ while ($true) {
     $requestPath = [Uri]::UnescapeDataString(([Uri]::new("http://localhost$rawPath")).AbsolutePath)
     if ($requestPath -eq '/') { $requestPath = '/index.html' }
     $candidate = [IO.Path]::GetFullPath((Join-Path $siteRoot $requestPath.TrimStart('/')))
+    if (-not [IO.Path]::HasExtension($candidate) -and -not (Test-Path -LiteralPath $candidate -PathType Leaf)) {
+      $candidate = "$candidate.html"
+    }
     if (-not $candidate.StartsWith($siteRoot, [StringComparison]::OrdinalIgnoreCase) -or -not (Test-Path -LiteralPath $candidate -PathType Leaf)) {
       Send-Response $stream '404 Not Found' 'text/plain; charset=utf-8' ([Text.Encoding]::UTF8.GetBytes('Not found'))
     } else {
