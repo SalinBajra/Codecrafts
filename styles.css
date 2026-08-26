@@ -537,6 +537,11 @@ html[data-theme="dark"] .contact-form select:-webkit-autofill{-webkit-text-fill-
 /* Keep directional arrows as consistent text glyphs on emoji-capable phones. */
 .header-cta span,.button span,.text-link span,.preview-name b,.engagement-card b i,.after-launch-link i,.round-link span,.about-invite a span,.contact-form button span,footer>p a b{font-family:Arial,Helvetica,sans-serif;font-variant-emoji:text;font-style:normal;line-height:1}
 
+@media(max-width:720px){
+  .closing:not(.home-closing) h2 em{color:#fff;text-shadow:0 2px 22px rgba(15,10,35,.2)}
+  .engagement-build b i{color:#fff}
+}
+
 @media(max-width:1000px){
   .engagements{padding-top:88px}.engagement-card{min-height:390px}.home-closing{grid-template-columns:1fr;gap:34px}.home-closing .round-link{justify-self:start}
 }
