@@ -422,3 +422,55 @@ footer:after{line-height:1;bottom:26px}
 @media(max-width:720px){
   footer:after{margin-bottom:0;line-height:1}
 }
+
+/* Homepage decision modules: two clear paths, with the secondary service kept secondary. */
+.engagements{padding:118px 0 26px}
+.engagements-head{max-width:930px;margin:0 auto 46px;text-align:center}
+.engagements-head h2{margin:14px 0 0;font-size:clamp(48px,5.4vw,78px);line-height:.94;letter-spacing:-.065em}
+.engagement-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.engagement-card{position:relative;isolation:isolate;min-height:440px;padding:34px;border-radius:24px;display:flex;flex-direction:column;overflow:hidden;transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s cubic-bezier(.16,1,.3,1)}
+.engagement-card:after{content:"";position:absolute;z-index:-1;width:360px;aspect-ratio:1;border-radius:50%;right:-90px;bottom:-190px;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.engagement-card:hover{transform:translateY(-7px)}
+.engagement-card:hover:after{transform:translate(-18px,-18px) scale(1.08)}
+.engagement-card>span{font-size:13px;font-weight:700;opacity:.55}
+.engagement-card>div{margin:auto 0}
+.engagement-card p{margin:0 0 18px;font-size:14px;font-weight:700}
+.engagement-card h3{max-width:560px;margin:0;font-size:clamp(36px,4vw,58px);line-height:.95;letter-spacing:-.06em}
+.engagement-card small{display:block;max-width:470px;margin-top:24px;font-size:15px;line-height:1.65;opacity:.68}
+.engagement-card b{display:flex;align-items:center;justify-content:space-between;margin-top:24px;font-size:14px}
+.engagement-card i,.after-launch-link i{font-style:normal;transition:transform .3s}
+.engagement-card:hover b i,.after-launch-link:hover i{transform:translate(4px,-4px)}
+.engagement-direction{background:linear-gradient(145deg,#ebe6ff,#f5f2ff 64%,#ded5ff);box-shadow:0 26px 72px rgba(75,55,150,.1)}
+.engagement-direction:after{background:rgba(114,85,245,.18)}
+.engagement-build{background:linear-gradient(145deg,#17171d,#08080b);color:#fff;box-shadow:0 28px 75px rgba(11,10,18,.14)}
+.engagement-build:after{background:var(--violet)}
+.engagement-build small{color:#b7b5bf;opacity:1}
+.engagement-build b i{color:#ae9aff}
+.after-launch-link{min-height:88px;margin-top:16px;padding:20px 26px;border:1px solid color-mix(in srgb,var(--ink) 10%,transparent);border-radius:16px;display:grid;grid-template-columns:.72fr 1.28fr auto;align-items:center;gap:26px;background:color-mix(in srgb,var(--surface) 66%,transparent);transition:background .25s,transform .25s}
+.after-launch-link:hover{background:var(--surface);transform:translateY(-2px)}
+.after-launch-link span{font-size:13px;color:var(--muted)}
+.after-launch-link strong{font-size:18px;letter-spacing:-.025em}
+.after-launch-link i{font-size:18px;color:var(--violet)}
+
+/* The final action is deliberately two columns; the button never becomes a floating third item. */
+.home-closing{min-height:330px;margin-top:86px;padding:58px 64px;grid-template-columns:minmax(0,1fr) auto;gap:64px;background:radial-gradient(circle at 82% 12%,rgba(114,85,245,.2),transparent 30rem),linear-gradient(120deg,#111117,#08080b)}
+.home-closing-copy{position:relative;z-index:2}
+.home-closing-copy>p{margin:0 0 18px;color:#a995ff;font-size:13px;font-weight:700}
+.home-closing h2{max-width:760px;font-size:clamp(48px,5.2vw,72px);line-height:.94}
+.home-closing-copy>span{display:block;max-width:600px;margin-top:24px;color:#aaaab4;font-size:15px;line-height:1.65}
+.home-closing .round-link{min-height:54px;padding:0 24px;border-radius:999px;display:inline-flex;gap:26px;align-items:center;justify-content:center;align-self:center;background:#fff;color:#111116;box-shadow:0 12px 36px rgba(0,0,0,.22)}
+.home-closing .round-link span{margin:0;color:var(--violet)}
+.home-closing .round-link:hover{background:#fff;color:#111116;transform:translateY(-3px);box-shadow:0 18px 44px rgba(0,0,0,.28)}
+
+html[data-theme="dark"] .engagement-direction{background:linear-gradient(145deg,#28213f,#1c1928 64%,#322654);color:#f5f2ff}
+html[data-theme="dark"] .after-launch-link{background:#17171b;border-color:#34343b}
+
+@media(max-width:1000px){
+  .engagements{padding-top:88px}.engagement-card{min-height:390px}.home-closing{grid-template-columns:1fr;gap:34px}.home-closing .round-link{justify-self:start}
+}
+@media(max-width:720px){
+  .engagements{width:calc(100% - 20px);padding:70px 0 14px}.engagements-head{margin-bottom:28px;padding:0 10px;text-align:left}.engagements-head h2{font-size:clamp(40px,11.4vw,48px)}
+  .engagement-grid{grid-template-columns:1fr;gap:10px}.engagement-card{min-height:380px;padding:26px;border-radius:18px}.engagement-card h3{font-size:clamp(37px,10.5vw,46px)}.engagement-card small{font-size:14px}.engagement-card:hover{transform:none}
+  .after-launch-link{min-height:112px;margin-top:10px;padding:20px;grid-template-columns:1fr auto;gap:6px 18px}.after-launch-link span{grid-column:1/-1}.after-launch-link strong{font-size:16px}.after-launch-link:hover{transform:none}
+  .home-closing{width:calc(100% - 20px);min-height:auto;margin-top:62px;padding:34px 24px;gap:30px;border-radius:18px}.home-closing h2{font-size:clamp(40px,11vw,48px)}.home-closing-copy>span{font-size:14px}.home-closing .round-link{min-height:52px;padding:0 20px}
+}
