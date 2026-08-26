@@ -12,6 +12,7 @@ if (canvas && host) {
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: 'low-power' });
     renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
     renderer.setClearColor(0x000000, 0);
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const group = new THREE.Group();
     scene.add(group);
@@ -48,7 +49,10 @@ if (canvas && host) {
       violetLight.intensity = dark ? 22 : 16;
     };
     syncTheme();
-    window.addEventListener('codecrafts:theme', syncTheme);
+    window.addEventListener('codecrafts:theme', () => {
+      syncTheme();
+      if (reducedMotion) renderer.render(scene, camera);
+    });
 
     const ring = new THREE.Mesh(
       new THREE.TorusGeometry(2.25, 0.018, 8, 120),
@@ -88,29 +92,33 @@ if (canvas && host) {
       renderer.setSize(width, height, false);
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
+      if (reducedMotion) renderer.render(scene, camera);
     };
     new ResizeObserver(resize).observe(canvas);
     resize();
 
-    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let visible = true;
-    new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; }, { threshold: 0.02 }).observe(host);
+    let inViewport = true;
+    let pageVisible = !document.hidden;
+    new IntersectionObserver(([entry]) => { inViewport = entry.isIntersecting; }, { threshold: 0.02 }).observe(host);
+    document.addEventListener('visibilitychange', () => { pageVisible = !document.hidden; });
 
     const clock = new THREE.Clock();
     const draw = () => {
+      if (reducedMotion) {
+        renderer.render(scene, camera);
+        return;
+      }
       requestAnimationFrame(draw);
-      if (!visible) return;
+      if (!inViewport || !pageVisible) return;
       const elapsed = clock.getElapsedTime();
       group.rotation.y += (pointer.x - group.rotation.y) * 0.035;
       group.rotation.x += (-pointer.y - group.rotation.x) * 0.035;
-      if (!reducedMotion) {
-        shell.rotation.y = elapsed * 0.11;
-        shell.rotation.x = elapsed * 0.065;
-        wireShell.rotation.y = -elapsed * 0.04;
-        wireShell.rotation.z = elapsed * 0.025;
-        ring.rotation.z = -0.35 + Math.sin(elapsed * 0.35) * 0.08;
-        particles.rotation.y = elapsed * 0.018;
-      }
+      shell.rotation.y = elapsed * 0.11;
+      shell.rotation.x = elapsed * 0.065;
+      wireShell.rotation.y = -elapsed * 0.04;
+      wireShell.rotation.z = elapsed * 0.025;
+      ring.rotation.z = -0.35 + Math.sin(elapsed * 0.35) * 0.08;
+      particles.rotation.y = elapsed * 0.018;
       renderer.render(scene, camera);
     };
     draw();

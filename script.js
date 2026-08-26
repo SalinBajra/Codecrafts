@@ -1,49 +1,13 @@
 const menu = document.querySelector('.menu');
 const nav = document.querySelector('#nav');
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.documentElement.classList.add('motion-ready');
 const footerCopy = document.querySelector('footer > p');
 if (footerCopy) {
   footerCopy.innerHTML = '<strong>Clear thinking. Distinct websites.</strong><span>Strategy, design and development with one accountable team in Nepal.</span><a href="mailto:hello@codecrafts.studio">hello@codecrafts.studio <b aria-hidden="true">↗</b></a><small>Based in Nepal · working worldwide</small>';
 }
 
-const progress = document.createElement('div');
-progress.className = 'scroll-progress';
-progress.setAttribute('aria-hidden', 'true');
-document.body.prepend(progress);
-
-let scrollFrame = 0;
-const updateProgress = () => {
-  const distance = document.documentElement.scrollHeight - innerHeight;
-  const amount = distance > 0 ? Math.min(scrollY / distance, 1) : 0;
-  progress.style.transform = `scaleX(${amount})`;
-  scrollFrame = 0;
-};
-addEventListener('scroll', () => {
-  if (!scrollFrame) scrollFrame = requestAnimationFrame(updateProgress);
-}, { passive: true });
-updateProgress();
-
 if (matchMedia('(pointer: fine)').matches && !reducedMotion) {
-  const halo = document.createElement('div');
-  halo.className = 'pointer-halo';
-  halo.setAttribute('aria-hidden', 'true');
-  document.body.append(halo);
-
-  addEventListener('pointermove', (event) => {
-    document.documentElement.style.setProperty('--pointer-x', `${event.clientX}px`);
-    document.documentElement.style.setProperty('--pointer-y', `${event.clientY}px`);
-  }, { passive: true });
-
-  document.querySelectorAll('.button,.header-cta,.round-link,.text-link').forEach((target) => {
-    target.addEventListener('pointermove', (event) => {
-      const bounds = target.getBoundingClientRect();
-      const x = event.clientX - bounds.left - bounds.width / 2;
-      const y = event.clientY - bounds.top - bounds.height / 2;
-      target.style.transform = `translate3d(${x * .09}px,${y * .14}px,0)`;
-    });
-    target.addEventListener('pointerleave', () => { target.style.transform = ''; });
-  });
-
   document.querySelectorAll('.project-image').forEach((project) => {
     project.addEventListener('pointermove', (event) => {
       const bounds = project.getBoundingClientRect();
@@ -126,7 +90,7 @@ const observer = new IntersectionObserver((entries) => {
       observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.12 });
+}, { threshold: 0.14, rootMargin: '0px 0px -7% 0px' });
 
 document.querySelectorAll('.reveal').forEach((node) => observer.observe(node));
 
@@ -147,6 +111,28 @@ if (art && matchMedia('(pointer:fine)').matches && !reducedMotion) {
     card.style.marginLeft = '';
     card.style.marginTop = '';
   }));
+}
+
+const hero = document.querySelector('.hero');
+if (hero && art && !reducedMotion) {
+  const cards = [...art.querySelectorAll('.concept-card')];
+  let heroFrame = 0;
+  const updateHeroMotion = () => {
+    const bounds = hero.getBoundingClientRect();
+    const progress = Math.max(0, Math.min(1, -bounds.top / Math.max(bounds.height * .72, 1)));
+    const movements = [[-18, -18], [0, -34], [18, -14]];
+    cards.forEach((card, index) => {
+      const [x, y] = movements[index] || [0, -20];
+      card.style.translate = `${x * progress}px ${y * progress}px`;
+      card.style.scale = `${1 - progress * .018}`;
+    });
+    art.style.setProperty('--hero-exit', progress.toFixed(3));
+    heroFrame = 0;
+  };
+  addEventListener('scroll', () => {
+    if (!heroFrame) heroFrame = requestAnimationFrame(updateHeroMotion);
+  }, { passive: true });
+  updateHeroMotion();
 }
 
 const form = document.querySelector('.contact-form');
