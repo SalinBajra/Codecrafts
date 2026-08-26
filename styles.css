@@ -475,8 +475,8 @@ html[data-theme="dark"] .contact-form select:-webkit-autofill{-webkit-text-fill-
 @media(min-width:1200px){
   .shell{width:calc(100% - 72px);max-width:1600px}
   .site-header{width:calc(100% - 40px);max-width:1700px}
-  .hero{grid-template-columns:minmax(480px,.72fr) minmax(680px,1.28fr);gap:clamp(30px,4vw,76px)}
-  .hero h1{font-size:clamp(68px,5.1vw,98px)}
+  .hero{grid-template-columns:minmax(610px,.86fr) minmax(0,1.14fr);gap:clamp(28px,3vw,56px)}
+  .hero h1{font-size:clamp(68px,4.7vw,88px)}
   .page-intro{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(320px,.65fr);gap:70px;align-items:end}
   .page-intro h1{align-self:center;max-width:none}
   .page-intro>p:last-child{width:auto;max-width:610px;margin:0 0 24px}
@@ -484,6 +484,15 @@ html[data-theme="dark"] .contact-form select:-webkit-autofill{-webkit-text-fill-
   .detail-list article{padding:76px clamp(56px,6vw,108px)}
   .about-statement h2{max-width:1400px}
   .contact-layout{grid-template-columns:minmax(440px,.8fr) minmax(560px,1.2fr);gap:clamp(70px,9vw,160px)}
+}
+
+@media(min-width:1001px){
+  .client-rail{width:min(1600px,calc(100% - 72px));max-width:none;margin:18px auto 64px;justify-content:flex-end}
+}
+@media(min-width:1001px) and (max-width:1199px){
+  .hero{grid-template-columns:minmax(500px,.95fr) minmax(0,1.05fr);gap:20px}
+  .hero h1{font-size:clamp(58px,5.4vw,64px)}
+  .client-rail{margin-top:-72px;margin-bottom:54px}
 }
 
 /* Service FAQ: concise, native and usable without JavaScript. */
