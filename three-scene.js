@@ -18,6 +18,8 @@ if (canvas && host) {
     scene.add(group);
 
     renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.05;
     const ambient = new THREE.AmbientLight(0xded7ff, 1.8);
     const violetLight = new THREE.PointLight(0x7c5cff, 16, 18);
     violetLight.position.set(3.5, 2.5, 4);
@@ -25,28 +27,41 @@ if (canvas && host) {
     whiteLight.position.set(-3, 4, 5);
     scene.add(ambient, violetLight, whiteLight);
 
-    const shell = new THREE.Mesh(
-      new THREE.TorusKnotGeometry(1.35, 0.34, 160, 20, 2, 3),
-      new THREE.MeshStandardMaterial({ color: 0x8062ff, roughness: 0.28, metalness: 0.42, transparent: true, opacity: 0.38 })
-    );
-    shell.position.set(0.35, 0.05, -1.7);
-    shell.scale.set(1.18, 1.18, 1.18);
-    group.add(shell);
+    const sculpture = new THREE.Group();
+    group.add(sculpture);
 
-    const wireShell = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(2.05, 2),
-      new THREE.MeshBasicMaterial({ color: 0x7c5cff, wireframe: true, transparent: true, opacity: 0.1 })
-    );
-    wireShell.position.copy(shell.position);
-    group.add(wireShell);
+    const arcGeometry = new THREE.TorusGeometry(1.28, 0.27, 32, 180, Math.PI * 1.56);
+    const darkMaterial = new THREE.MeshPhysicalMaterial({
+      color: 0x15151c,
+      roughness: 0.24,
+      metalness: 0.62,
+      clearcoat: 1,
+      clearcoatRoughness: 0.16
+    });
+    const violetMaterial = new THREE.MeshPhysicalMaterial({
+      color: 0x6f5bc7,
+      roughness: 0.34,
+      metalness: 0.4,
+      clearcoat: 0.78,
+      clearcoatRoughness: 0.24
+    });
+
+    const backArc = new THREE.Mesh(arcGeometry, darkMaterial);
+    backArc.position.set(-0.5, 0.08, -0.28);
+    backArc.rotation.set(0.2, -0.28, Math.PI * 0.23);
+    backArc.scale.set(1.08, 1.08, 1.08);
+
+    const frontArc = new THREE.Mesh(arcGeometry, violetMaterial);
+    frontArc.position.set(0.52, -0.08, 0.22);
+    frontArc.rotation.set(-0.18, 0.3, Math.PI * 0.23);
+    frontArc.scale.set(0.94, 0.94, 0.94);
+    sculpture.add(backArc, frontArc);
 
     const syncTheme = () => {
       const dark = document.documentElement.dataset.theme === 'dark';
-      shell.material.color.setHex(dark ? 0xa991ff : 0x8062ff);
-      shell.material.opacity = dark ? 0.55 : 0.38;
-      wireShell.material.color.setHex(dark ? 0xb7a5ff : 0x7c5cff);
-      wireShell.material.opacity = dark ? 0.18 : 0.1;
-      violetLight.intensity = dark ? 22 : 16;
+      darkMaterial.color.setHex(dark ? 0x24232d : 0x15151c);
+      violetMaterial.color.setHex(dark ? 0x8874e6 : 0x6f5bc7);
+      violetLight.intensity = dark ? 19 : 13;
     };
     syncTheme();
     window.addEventListener('codecrafts:theme', () => {
@@ -54,28 +69,6 @@ if (canvas && host) {
       if (reducedMotion) renderer.render(scene, camera);
     });
 
-    const ring = new THREE.Mesh(
-      new THREE.TorusGeometry(2.25, 0.018, 8, 120),
-      new THREE.MeshBasicMaterial({ color: 0x0c0c0f, transparent: true, opacity: 0.12 })
-    );
-    ring.position.set(-0.15, 0.05, -1.8);
-    ring.rotation.set(1.05, 0.2, -0.35);
-    group.add(ring);
-
-    const particleCount = 72;
-    const positions = new Float32Array(particleCount * 3);
-    for (let index = 0; index < particleCount; index += 1) {
-      positions[index * 3] = (Math.random() - 0.5) * 8.5;
-      positions[index * 3 + 1] = (Math.random() - 0.5) * 5.4;
-      positions[index * 3 + 2] = (Math.random() - 0.5) * 3 - 1.5;
-    }
-    const particlesGeometry = new THREE.BufferGeometry();
-    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    const particles = new THREE.Points(
-      particlesGeometry,
-      new THREE.PointsMaterial({ color: 0x7c5cff, size: 0.025, transparent: true, opacity: 0.45, sizeAttenuation: true })
-    );
-    group.add(particles);
 
     const pointer = { x: 0, y: 0 };
     host.addEventListener('pointermove', (event) => {
@@ -113,12 +106,9 @@ if (canvas && host) {
       const elapsed = clock.getElapsedTime();
       group.rotation.y += (pointer.x - group.rotation.y) * 0.035;
       group.rotation.x += (-pointer.y - group.rotation.x) * 0.035;
-      shell.rotation.y = elapsed * 0.11;
-      shell.rotation.x = elapsed * 0.065;
-      wireShell.rotation.y = -elapsed * 0.04;
-      wireShell.rotation.z = elapsed * 0.025;
-      ring.rotation.z = -0.35 + Math.sin(elapsed * 0.35) * 0.08;
-      particles.rotation.y = elapsed * 0.018;
+      sculpture.rotation.z = Math.sin(elapsed * 0.32) * 0.045;
+      backArc.rotation.y = -0.28 + Math.sin(elapsed * 0.27) * 0.045;
+      frontArc.rotation.y = 0.3 - Math.sin(elapsed * 0.24) * 0.055;
       renderer.render(scene, camera);
     };
     draw();
