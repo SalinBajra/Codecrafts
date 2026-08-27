@@ -597,6 +597,49 @@ html[data-theme="dark"] .client-chip strong{color:#fff}
   .client-yala .client-logo img{max-width:72%;max-height:88%}
 }
 
+/* The homepage hero is a brand object, not a duplicate portfolio. */
+.hero-identity{display:grid;place-items:center;overflow:visible}
+.hero-identity:before{width:82%;left:9%;top:4%;background:radial-gradient(circle at 50% 48%,rgba(114,85,245,.3),rgba(160,139,255,.12) 36%,rgba(114,85,245,.035) 61%,transparent 74%)}
+.hero-identity:after{right:9%;top:8%;width:70%;height:80%;border-color:color-mix(in srgb,var(--violet) 25%,transparent);transform:rotate(-12deg)}
+.hero-identity .hero-webgl{z-index:0;inset:-5%;width:110%;height:105%}
+.identity-core{position:relative;z-index:3;width:146px;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:#0d0d12;box-shadow:0 28px 75px rgba(26,18,58,.28),inset 0 0 0 1px rgba(255,255,255,.1);animation:identity-float 6s ease-in-out infinite}
+.identity-core:after{content:"";position:absolute;inset:8px;border:1px solid rgba(255,255,255,.11);border-radius:50%}
+.identity-core img{width:68px;height:68px}
+.identity-orbit{position:absolute;z-index:2;width:360px;aspect-ratio:1;border:1px solid color-mix(in srgb,var(--violet) 34%,transparent);border-radius:50%;animation:identity-turn 18s linear infinite}
+.identity-orbit:before{content:"";position:absolute;inset:38px;border:1px solid color-mix(in srgb,var(--ink) 10%,transparent);border-radius:50%}
+.identity-orbit i{position:absolute;width:12px;aspect-ratio:1;border-radius:50%;background:var(--violet);box-shadow:0 0 0 7px color-mix(in srgb,var(--violet) 12%,transparent)}
+.identity-orbit i:nth-child(1){left:19px;top:88px}.identity-orbit i:nth-child(2){right:33px;top:52px}.identity-orbit i:nth-child(3){right:44px;bottom:44px;width:7px}
+@keyframes identity-turn{to{transform:rotate(360deg)}}
+@keyframes identity-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+html[data-theme="dark"] .identity-core{background:#08080b;box-shadow:0 28px 80px rgba(0,0,0,.5),0 0 80px rgba(114,85,245,.16),inset 0 0 0 1px rgba(255,255,255,.12)}
+
+/* A quiet client signature: logos only, no cards, labels or navigation. */
+.client-rail{width:min(760px,calc(100% - 64px));margin:0 auto 68px;padding:8px 0 0;border:0;border-radius:0;background:transparent;box-shadow:none}
+.client-rail>p{margin:0 0 24px;color:var(--muted);font-size:13px;font-weight:600}
+.client-rail-group{display:flex;align-items:center;justify-content:center;gap:clamp(38px,7vw,82px)}
+.client-chip,.client-chip:first-child,.client-chip:hover{width:auto;min-width:0;height:auto;margin:0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;display:block;transform:none;overflow:visible}
+.client-logo,.client-bottu .client-logo{width:104px;height:50px;display:grid;place-items:center;background:transparent;border-radius:0;filter:grayscale(.15);opacity:.82}
+.client-bottu .client-logo{width:142px}.client-yala .client-logo{width:76px}.client-geeta .client-logo{width:58px}
+.client-logo img,.client-bottu .client-logo img,.client-yala .client-logo img,.client-geeta .client-logo img{max-width:100%;max-height:100%;object-fit:contain}
+.client-yala .client-logo,.client-geeta .client-logo{background:transparent}
+html[data-theme="dark"] .client-rail,html[data-theme="dark"] .client-chip{background:transparent;border:0}
+html[data-theme="dark"] .client-logo{filter:none;opacity:.9}
+html[data-theme="dark"] .client-bottu .client-logo img{filter:invert(1) grayscale(1) brightness(1.35)}
+
+@media(max-width:720px){
+  .hero-identity{height:360px;margin-top:6px}
+  .identity-core{width:118px}.identity-core img{width:54px;height:54px}
+  .identity-orbit{width:275px}
+  .client-rail{width:calc(100% - 36px);margin:0 auto 46px;padding:0}
+  .client-rail>p{margin-bottom:20px}
+  .client-rail-window{overflow:visible}
+  .client-rail-group{display:flex;gap:clamp(24px,9vw,42px)}
+  .client-chip,.client-chip:first-child{width:auto;height:auto;padding:0}
+  .client-logo,.client-bottu .client-logo{width:105px;height:40px}.client-yala .client-logo{width:55px}.client-geeta .client-logo{width:43px}
+}
+
+@media(prefers-reduced-motion:reduce){.identity-core,.identity-orbit{animation:none}}
+
 @media(max-width:1000px){
   .engagements{padding-top:88px}.engagement-card{min-height:390px}.home-closing{grid-template-columns:1fr;gap:34px}.home-closing .round-link{justify-self:start}
 }

@@ -29,8 +29,8 @@ if (canvas && host) {
       new THREE.TorusKnotGeometry(1.35, 0.34, 160, 20, 2, 3),
       new THREE.MeshStandardMaterial({ color: 0x8062ff, roughness: 0.28, metalness: 0.42, transparent: true, opacity: 0.38 })
     );
-    shell.position.set(1.7, 0.1, -1.7);
-    shell.scale.set(1.08, 1.08, 1.08);
+    shell.position.set(0.35, 0.05, -1.7);
+    shell.scale.set(1.18, 1.18, 1.18);
     group.add(shell);
 
     const wireShell = new THREE.Mesh(
@@ -58,7 +58,7 @@ if (canvas && host) {
       new THREE.TorusGeometry(2.25, 0.018, 8, 120),
       new THREE.MeshBasicMaterial({ color: 0x0c0c0f, transparent: true, opacity: 0.12 })
     );
-    ring.position.set(-0.45, 0.1, -1.8);
+    ring.position.set(-0.15, 0.05, -1.8);
     ring.rotation.set(1.05, 0.2, -0.35);
     group.add(ring);
 
