@@ -640,19 +640,20 @@ html[data-theme="dark"] .client-bottu .client-logo img{filter:invert(1) grayscal
 }
 .goal-grid a:before{content:none}
 .goal-grid a:hover{transform:translateY(-5px);box-shadow:inset 0 1px rgba(255,255,255,.08),0 18px 42px rgba(0,0,0,.18)}
-.goal-grid b{margin-top:auto;padding-top:24px;line-height:1.35}
 
 /* Internal navigation needs no arrow ornament. */
 .after-launch-link{grid-template-columns:.72fr 1.28fr}
 
-/* Display the complete Yala Logistics lockup, including its wordmark. */
-.client-yala .client-logo{width:82px;height:82px;padding:0;background:#fff;border-radius:2px}
-.client-yala .client-logo img{width:100%;height:100%;max-width:none;max-height:none;object-fit:contain}
+/* Keep the client marks compact and use the original transparent Yala PNG. */
+.client-rail-group{gap:clamp(30px,5vw,56px)}
+.client-yala .client-logo{width:58px;height:68px;padding:2px;background:transparent;border-radius:0;overflow:visible}
+.client-yala .client-logo img{width:auto;height:100%;max-width:100%;max-height:100%;object-fit:contain}
 
 @media(max-width:720px){
   .after-launch-link{grid-template-columns:1fr}
   .after-launch-link span{grid-column:auto}
-  .client-yala .client-logo{width:62px;height:62px;padding:0}
+  .client-rail-group{gap:clamp(22px,7vw,34px)}
+  .client-yala .client-logo{width:48px;height:58px;padding:2px}
 }
 
 @media(max-width:1000px){
