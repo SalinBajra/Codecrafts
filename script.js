@@ -4,7 +4,7 @@ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 document.documentElement.classList.add('motion-ready');
 const footerCopy = document.querySelector('footer > p');
 if (footerCopy) {
-  footerCopy.innerHTML = '<strong>Clear thinking. Distinct websites.</strong><span>Strategy, design and development with one accountable team in Nepal.</span><a href="mailto:hello@codecrafts.studio">hello@codecrafts.studio <b aria-hidden="true">↗︎</b></a><small>Based in Nepal · working worldwide</small>';
+  footerCopy.innerHTML = '<strong>Strategy-led websites for growing businesses.</strong><span>Web design, responsive development and technical SEO from one accountable team in Nepal.</span><a href="mailto:hello@codecrafts.studio">hello@codecrafts.studio <b aria-hidden="true">↗︎</b></a><small>Based in Nepal · working worldwide</small>';
 }
 
 if (matchMedia('(pointer: fine)').matches && !reducedMotion) {

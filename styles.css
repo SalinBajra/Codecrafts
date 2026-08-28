@@ -1617,6 +1617,116 @@ html[data-theme="dark"] .approved-hero + .client-rail>p{color:#b9b5c6}
   .approved-hero + .client-rail .client-geeta .client-logo{width:44px;height:44px}
 }
 
+/* Homepage brand typography and deterministic CTA icons. */
+.approved-hero h1{
+  font-family:"Manrope Variable",Inter,Aptos,Arial,sans-serif;
+  font-kerning:normal;
+  text-rendering:optimizeLegibility;
+}
+.approved-mobile-break{display:none}
+.approved-hero h1 span{
+  font-family:inherit;
+  font-size:clamp(56px,4.35vw,70px);
+  font-weight:710;
+  font-variation-settings:"wght" 710;
+  line-height:.93;
+  letter-spacing:-.062em;
+}
+.approved-hero h1 em{
+  margin-top:4px;
+  font-family:inherit;
+  font-size:clamp(58px,4.6vw,74px);
+  font-weight:590;
+  font-variation-settings:"wght" 590;
+  font-style:normal;
+  line-height:.93;
+  letter-spacing:-.064em;
+}
+.approved-intro{
+  margin-top:31px;
+  max-width:540px;
+  font-size:17px;
+  font-weight:430;
+  line-height:1.58;
+  letter-spacing:-.022em;
+}
+.approved-button{
+  gap:18px;
+  font-size:13px;
+  font-weight:720;
+  letter-spacing:-.018em;
+}
+.approved-arrow{
+  width:15px;
+  height:15px;
+  flex:0 0 15px;
+  display:block;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  transition:transform .25s cubic-bezier(.16,1,.3,1);
+}
+.approved-button:hover .approved-arrow{transform:translate(2px,-2px)}
+.approved-benefit b{
+  font-family:"Manrope Variable",Inter,Aptos,Arial,sans-serif;
+  font-weight:720;
+  letter-spacing:-.025em;
+}
+.approved-benefit small{
+  font-family:"Manrope Variable",Inter,Aptos,Arial,sans-serif;
+  font-weight:440;
+  letter-spacing:-.012em;
+}
+
+@media(max-width:1180px) and (min-width:901px){
+  .approved-hero h1 span{font-size:clamp(42px,4.25vw,51px)}
+  .approved-hero h1 em{font-size:clamp(44px,4.55vw,55px)}
+  .approved-intro{font-size:15px}
+}
+
+@media(max-width:600px){
+  .approved-hero{
+    width:calc(100% - 30px);
+    max-width:100%;
+    min-width:0;
+    grid-template-columns:minmax(0,1fr);
+    overflow:visible;
+  }
+  .approved-hero-copy,
+  .approved-devices{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+  }
+  .approved-hero h1{max-width:100%}
+  .approved-hero h1 span{
+    max-width:100%;
+    font-size:clamp(38px,11.2vw,46px);
+    line-height:.98;
+    letter-spacing:-.052em;
+  }
+  .approved-mobile-break{display:block}
+  .approved-hero h1 em{
+    margin-top:4px;
+    font-size:clamp(40px,11.8vw,49px);
+    line-height:.94;
+    letter-spacing:-.058em;
+  }
+  .approved-intro{margin-top:26px;font-size:15px;line-height:1.55}
+  .approved-actions{width:100%;max-width:100%;min-width:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .approved-button{width:100%;min-width:0;padding:0 12px;gap:8px;justify-content:space-between;font-size:12px;white-space:nowrap;overflow:hidden}
+  .approved-arrow{width:14px;height:14px;flex-basis:14px}
+  .approved-hero + .client-rail,
+  .approved-hero + .client-rail .client-rail-window,
+  .approved-hero + .client-rail .client-rail-track,
+  .approved-hero + .client-rail .client-rail-group{
+    max-width:100%;
+    min-width:0;
+  }
+}
+
 /* Selected clients — trust statement with an editorial logo row. */
 .approved-hero + .client-rail{
   width:min(980px,calc(100% - 48px));
