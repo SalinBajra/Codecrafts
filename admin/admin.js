@@ -33,9 +33,13 @@
   const saveState = document.querySelector('#save-state');
   const notice = document.querySelector('#cms-notice');
   const loadingTemplate = document.querySelector('#loading-template');
+  const previewFrame = document.querySelector('#preview-frame');
+  const openPreview = document.querySelector('#open-preview');
   let content = null;
   let activeSection = sections.some(([key]) => key === location.hash.slice(1)) ? location.hash.slice(1) : 'site';
   let dirty = false;
+  let previewTimer = 0;
+  const previewPages = { site: '/', home: '/', work: '/work', services: '/services', about: '/about', contact: '/contact', seo: '/' };
 
   const friendly = (key) => labels[key] || String(key).replace(/([A-Z])/g, ' $1').replace(/[-_]/g, ' ').trim();
   const pathString = (path) => path.join('.');
@@ -51,6 +55,21 @@
     dirty = true;
     saveState.textContent = 'Unpublished changes';
     saveState.className = 'save-state dirty';
+    clearTimeout(previewTimer);
+    previewTimer = setTimeout(sendPreview, 120);
+  }
+
+  function sendPreview() {
+    if (!content || !previewFrame?.contentWindow) return;
+    previewFrame.contentWindow.postMessage({ type: 'codecrafts:cms-preview', content }, location.origin);
+  }
+
+  function updatePreviewPage() {
+    if (!previewFrame) return;
+    const path = previewPages[activeSection] || '/';
+    openPreview.href = path;
+    if (previewFrame.getAttribute('src') !== path) previewFrame.setAttribute('src', path);
+    else sendPreview();
   }
 
   function inputType(key, value) {
@@ -132,6 +151,7 @@
     if (result.source === 'supabase-empty') notice.textContent = 'Supabase is connected. Your first publish will create the live content record.';
     renderNav();
     render();
+    updatePreviewPage();
   }
 
   async function openApp() {
@@ -164,6 +184,7 @@
     activeSection = button.dataset.section;
     history.replaceState(null, '', `#${activeSection}`);
     render();
+    updatePreviewPage();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
@@ -236,6 +257,8 @@
     try { await request('/api/cms-logout', { method: 'POST', body: '{}' }); } catch (_) {}
     location.reload();
   });
+
+  previewFrame?.addEventListener('load', () => setTimeout(sendPreview, 80));
 
   window.addEventListener('beforeunload', (event) => { if (dirty) { event.preventDefault(); event.returnValue = ''; } });
 

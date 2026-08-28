@@ -44,6 +44,14 @@
       <div class="cms-notice" id="cms-notice" hidden></div>
       <section class="editor" id="editor" aria-live="polite"></section>
     </main>
+
+    <section class="cms-preview" aria-label="Live website preview">
+      <header class="preview-header">
+        <div class="preview-status"><span aria-hidden="true"></span><div><strong>Live preview</strong><small>Only you can see unpublished changes</small></div></div>
+        <a id="open-preview" href="/" target="_blank" rel="noopener">Open page <span aria-hidden="true">↗</span></a>
+      </header>
+      <iframe id="preview-frame" src="/" title="CodeCrafts live website preview"></iframe>
+    </section>
   </div>
 
   <template id="loading-template"><div class="loading"><span></span><p>Loading website content...</p></div></template>

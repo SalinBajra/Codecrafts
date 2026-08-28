@@ -128,16 +128,24 @@
     text('.contact-form button[type="submit"]', contact.submitLabel);
   }
 
+  function applyContent(content) {
+    applySeo(content); applyCommon(content);
+    if (page === 'home') applyHome(content.home); if (page === 'work') applyWork(content.work); if (page === 'services') applyServices(content.services); if (page === 'about') applyAbout(content.about); if (page === 'contact') applyContact(content.contact);
+    document.dispatchEvent(new CustomEvent('codecrafts:content-ready'));
+  }
+
   async function load() {
     const controller = new AbortController(); const timer = setTimeout(() => controller.abort(), 3500);
     try {
       const response = await fetch('/api/content', { signal: controller.signal, headers: { accept: 'application/json' } });
       if (!response.ok) return;
-      const content = await response.json(); applySeo(content); applyCommon(content);
-      if (page === 'home') applyHome(content.home); if (page === 'work') applyWork(content.work); if (page === 'services') applyServices(content.services); if (page === 'about') applyAbout(content.about); if (page === 'contact') applyContact(content.contact);
-      document.dispatchEvent(new CustomEvent('codecrafts:content-ready'));
+      applyContent(await response.json());
     } catch (_) { /* Static HTML remains the resilient fallback. */ }
     finally { clearTimeout(timer); }
   }
+  window.addEventListener('message', (event) => {
+    if (event.origin !== location.origin || event.data?.type !== 'codecrafts:cms-preview' || !event.data.content) return;
+    applyContent(event.data.content);
+  });
   load();
 })();
