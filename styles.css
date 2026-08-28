@@ -1149,3 +1149,40 @@ html[data-theme="dark"] .approved-hero + .client-rail{background:transparent;bor
   .approved-phone-island{top:2.2%;width:34%;height:3.6%}
   .approved-phone-screen{padding:10% 8% 5%;border-radius:10% / 5%}
 }
+
+/* Final desktop hero layout correction: positioning and scale only. */
+@media(min-width:901px){
+  .approved-hero{
+    max-width:1500px;
+    width:calc(100% - 80px);
+    margin:0 auto;
+    padding-inline:0;
+    display:grid;
+    grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+    align-items:center;
+    gap:clamp(30px,4vw,70px);
+    overflow:visible;
+    transform:none;
+  }
+  .approved-hero-copy{
+    position:relative;
+    left:auto;
+    width:100%;
+    min-width:0;
+    transform:none;
+  }
+  .approved-devices{
+    width:min(820px,calc(100% + 64px));
+    max-width:none;
+    margin:0;
+    justify-self:end;
+    overflow:visible;
+    transform:none;
+  }
+  .approved-devices:before{left:0;width:100%}
+  .approved-laptop{inset:0;width:auto;transform:none}
+}
+
+@media(min-width:901px) and (max-width:1320px){
+  .approved-hero h1 span{white-space:normal}
+}
