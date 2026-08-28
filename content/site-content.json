@@ -1,0 +1,186 @@
+{
+  "version": 1,
+  "updatedAt": null,
+  "site": {
+    "brandName": "CodeCrafts",
+    "email": "hello@codecrafts.studio",
+    "headerCtaLabel": "Start a project",
+    "headerCtaUrl": "/contact",
+    "footerLineOne": "Web design & development studio.",
+    "footerLineTwo": "Based in Nepal. Working worldwide."
+  },
+  "seo": {
+    "home": {
+      "title": "CodeCrafts | Web Design and Development Studio in Nepal",
+      "description": "CodeCrafts is a web design and development studio in Nepal building distinctive, high-performing websites for growing businesses."
+    },
+    "work": {
+      "title": "Web Design Work | CodeCrafts Nepal",
+      "description": "Explore responsive websites designed and developed by CodeCrafts for creative production, logistics and fashion retail businesses."
+    },
+    "services": {
+      "title": "Website Strategy, Design and Development | CodeCrafts",
+      "description": "Website strategy, UX design, responsive development, technical SEO and after-launch improvements from one focused team."
+    },
+    "about": {
+      "title": "About CodeCrafts | Independent Web Studio in Nepal",
+      "description": "Meet CodeCrafts, an independent web design and development studio in Nepal working with businesses locally and worldwide."
+    },
+    "contact": {
+      "title": "Start a Website Project | CodeCrafts",
+      "description": "Tell CodeCrafts what your website should do better and begin with a practical review of your business goal, audience and current experience."
+    }
+  },
+  "home": {
+    "hero": {
+      "titleMain": "Websites built for",
+      "titleAccent": "business growth.",
+      "description": "CodeCrafts is a web design and development studio in Nepal. We bring strategy, content, UX and code together to build fast, distinctive websites that earn trust and generate enquiries.",
+      "primaryLabel": "Start a project",
+      "primaryUrl": "/contact",
+      "secondaryLabel": "View our work",
+      "secondaryUrl": "/work",
+      "deviceImage": "assets/codecrafts-device-hero-light.png",
+      "deviceAlt": "Responsive CodeCrafts website projects displayed on a laptop and phone"
+    },
+    "clients": {
+      "label": "Selected clients",
+      "description": "Website work across creative production, logistics and retail.",
+      "items": [
+        {"name": "Bottu Pottu Productions", "image": "assets/clients/bottu-pottu-logo.svg", "styleClass": "client-bottu"},
+        {"name": "Yala Logistics", "image": "assets/clients/yala-logo.png", "styleClass": "client-yala"},
+        {"name": "Geeta's Collection", "image": "assets/clients/geeta-mark.svg", "styleClass": "client-geeta"}
+      ]
+    },
+    "problemSection": {
+      "title": "Turn website problems into business progress.",
+      "description": "If visitors cannot understand the offer, trust the business or find the next step, the website is losing useful opportunities.",
+      "cards": [
+        {"eyebrow": "Hard to understand", "title": "Make the offer clear.", "description": "Positioning, page structure and focused copy that explain the value quickly.", "linkLabel": "Clarify your website", "url": "/contact?goal=clarity"},
+        {"eyebrow": "Hard to trust", "title": "Build visible credibility.", "description": "Distinctive design, useful proof and a responsive experience that feels established.", "linkLabel": "Strengthen trust", "url": "/contact?goal=credibility"},
+        {"eyebrow": "Hard to act", "title": "Guide the next step.", "description": "Focused user journeys that help the right visitors enquire, book or buy.", "linkLabel": "Improve conversion", "url": "/contact?goal=action"}
+      ]
+    },
+    "engagements": {
+      "title": "Website expertise.\nAt the right stage.",
+      "cards": [
+        {"eyebrow": "Website direction", "title": "Define the strategy before designing pages.", "description": "Positioning, audience journeys, content priorities and a practical website plan.", "linkLabel": "Explore website strategy", "url": "/services#direction"},
+        {"eyebrow": "Complete website", "title": "Move from strategy to a finished website.", "description": "UX design, responsive development, technical SEO, testing and launch with one team.", "linkLabel": "Explore website delivery", "url": "/services#complete-website"}
+      ],
+      "afterLaunchEyebrow": "Already have a live website?",
+      "afterLaunchTitle": "See how we improve what is already working.",
+      "afterLaunchUrl": "/services#after-launch"
+    },
+    "closing": {
+      "title": "Know what to improve.\nBefore rebuilding.",
+      "description": "Share the current website and business goal. We'll identify the changes most likely to improve clarity, trust and conversion.",
+      "buttonLabel": "Request a review",
+      "buttonUrl": "/contact?goal=review"
+    }
+  },
+  "work": {
+    "intro": {
+      "titleMain": "Real business problems.",
+      "titleAccent": "Distinct websites.",
+      "description": "Explore web design work for creative production, logistics and fashion retail in Nepal. Each responsive website is shaped around its audience, offer and commercial goal - not a reusable visual formula."
+    },
+    "projects": [
+      {
+        "id": "bottu-pottu",
+        "category": "Creative studio website",
+        "title": "Bottu Pottu",
+        "url": "https://bottupottu.com",
+        "image": "assets/bottu-homepage.png",
+        "imageAlt": "Bottu Pottu Productions creative studio website homepage",
+        "visitLabel": "Visit Bottu Pottu website",
+        "challenge": "Make a multidisciplinary body of work easy to understand.",
+        "response": "A story-first portfolio and enquiry experience that connects films, campaigns, photography and motion without flattening the studio's character.",
+        "tags": ["Positioning", "Art direction", "Web development"]
+      },
+      {
+        "id": "yala-logistics",
+        "category": "Logistics company website",
+        "title": "Yala Logistics",
+        "url": "https://yalalogistics.com.np",
+        "image": "assets/yala-homepage.png",
+        "imageAlt": "Yala Logistics corporate logistics website homepage",
+        "visitLabel": "Visit Yala Logistics website",
+        "challenge": "Explain a broad logistics operation without overwhelming buyers.",
+        "response": "A corporate website that organises air, ocean, road and contract logistics into clear service pages and direct enquiry paths.",
+        "tags": ["Service architecture", "Corporate UX", "Web development"]
+      },
+      {
+        "id": "geetas-collection",
+        "category": "Fashion e-commerce website",
+        "title": "Geeta's Collection",
+        "url": "https://geetas-collection.vercel.app",
+        "image": "assets/geeta-homepage-real.png",
+        "imageAlt": "Geeta's Collection Nepal fashion e-commerce website homepage",
+        "visitLabel": "Visit Geeta's Collection website",
+        "challenge": "Bring product discovery and cultural character into one calm shopping journey.",
+        "response": "A responsive, content-led storefront connecting brand story, product details, fit guidance and checkout.",
+        "tags": ["E-commerce", "Product storytelling", "Web development"]
+      }
+    ],
+    "closing": {
+      "eyebrow": "Have something in mind?",
+      "titleMain": "Let's make it",
+      "titleAccent": "matter.",
+      "buttonLabel": "Start a project",
+      "buttonUrl": "/contact"
+    }
+  },
+  "services": {
+    "intro": {
+      "titleMain": "Website strategy.",
+      "titleAccent": "Design to launch.",
+      "description": "Start with clear direction, commission a complete responsive website or improve what is already live. One accountable team carries the business goal from first decision through launch."
+    },
+    "items": [
+      {"id": "direction", "title": "Find the right direction.", "description": "For businesses that need a stronger website but want the audience, message and priorities resolved before design begins.", "bullets": ["Business, competitor and audience discovery", "Positioning and message hierarchy", "User journeys and website architecture", "Prioritised content and conversion plan"]},
+      {"id": "complete-website", "title": "Build the whole experience.", "description": "A complete web design and development engagement connecting strategy, content, UX, technology and launch.", "bullets": ["Creative direction and accessible interface design", "Fast, responsive web development", "CMS or e-commerce integration", "Technical SEO, testing, launch and handover"]},
+      {"id": "after-launch", "title": "Improve what is live.", "description": "Focused improvements for an existing website that needs to perform better as the business and its customers evolve.", "bullets": ["Analytics and user-journey review", "Conversion and content improvements", "Performance, SEO and accessibility checks", "Ongoing development and maintenance"]}
+    ],
+    "fit": {
+      "title": "You need a useful business tool - not decoration.",
+      "bullets": ["Your current website no longer represents the company.", "Customers struggle to understand, trust, enquire or buy.", "You value clear decisions and direct collaboration.", "You want one accountable team from direction through launch."],
+      "buttonLabel": "Request a website review",
+      "buttonUrl": "/contact?goal=review"
+    },
+    "faq": {
+      "title": "Before we begin.",
+      "description": "Useful answers to the questions that usually shape a website engagement.",
+      "items": [
+        {"question": "What does a website project include?", "answer": "A complete engagement can include strategy, content direction, UX and interface design, responsive development, technical SEO, testing, launch and handover. We agree the exact scope before work begins."},
+        {"question": "How long does a project take?", "answer": "Timing depends on scope, content and feedback. After the initial review, we provide a practical schedule with clear decision points rather than an arbitrary promise."},
+        {"question": "Can you improve an existing website?", "answer": "Yes. We can review the current experience, identify the most valuable improvements and work with what is already useful instead of rebuilding by default."},
+        {"question": "Do you work with clients outside Nepal?", "answer": "Yes. CodeCrafts is based in Nepal and works remotely with businesses worldwide through direct calls, shared reviews and documented decisions."},
+        {"question": "What do you need from us to start?", "answer": "Bring the business goal, the current problem and any useful customer context. You do not need a polished brief; defining the right brief is part of the work."}
+      ]
+    }
+  },
+  "about": {
+    "intro": {
+      "titleMain": "Small by design.",
+      "titleAccent": "Direct by default.",
+      "description": "CodeCrafts is an independent web design and development studio in Nepal, working with growing businesses locally and worldwide. Strategy, UX and code stay with one accountable team."
+    },
+    "statement": "The people learning how your business works are the same people shaping the message, designing the experience and building the website.",
+    "values": [
+      {"title": "Clarity before layouts", "description": "We define the audience, business goal, message hierarchy and useful next step before designing screens."},
+      {"title": "Specific to the business", "description": "The website should express your company's character and strengths - not reproduce a fashionable template."},
+      {"title": "Useful after launch", "description": "The finished website is fast, responsive, accessible and maintainable for real customers and evolving content."},
+      {"title": "Accountable throughout", "description": "There is no handoff maze. Website strategy, design and development remain connected through testing and launch."}
+    ],
+    "inviteText": "Need a website people can understand, trust and use?",
+    "inviteLabel": "Request a website review",
+    "inviteUrl": "/contact?goal=review"
+  },
+  "contact": {
+    "title": "What should your website do better?",
+    "description": "Tell us about the business goal, the current website and what customers should find easier. Whether you need clearer direction, a complete responsive build or focused improvements, you do not need a finished brief to begin.",
+    "email": "hello@codecrafts.studio",
+    "serviceOptions": ["Website clarity review", "Website direction", "Complete website", "E-commerce", "After-launch improvements"],
+    "submitLabel": "Send website details"
+  }
+}

@@ -26,7 +26,30 @@ while ($true) {
     $rawPath = if ($parts.Length -gt 1) { $parts[1] } else { '/' }
     $requestPath = [Uri]::UnescapeDataString(([Uri]::new("http://localhost$rawPath")).AbsolutePath)
     if ($requestPath -eq '/') { $requestPath = '/index.html' }
+    if ($requestPath -eq '/api/content') {
+      $contentFile = Join-Path $siteRoot 'content\site-content.json'
+      Send-Response $stream '200 OK' 'application/json; charset=utf-8' ([IO.File]::ReadAllBytes($contentFile))
+      continue
+    }
+    if ($requestPath -eq '/api/cms-session') {
+      Send-Response $stream '200 OK' 'application/json; charset=utf-8' ([Text.Encoding]::UTF8.GetBytes('{"authenticated":true}'))
+      continue
+    }
+    if ($requestPath -eq '/api/cms-content' -and $parts[0] -eq 'GET') {
+      $contentFile = Join-Path $siteRoot 'content\site-content.json'
+      $fallbackJson = [IO.File]::ReadAllText($contentFile, [Text.Encoding]::UTF8)
+      $cmsPayload = "{`"content`":$fallbackJson,`"source`":`"fallback`"}"
+      Send-Response $stream '200 OK' 'application/json; charset=utf-8' ([Text.Encoding]::UTF8.GetBytes($cmsPayload))
+      continue
+    }
+    if ($requestPath -like '/api/cms-*') {
+      Send-Response $stream '503 Service Unavailable' 'application/json; charset=utf-8' ([Text.Encoding]::UTF8.GetBytes('{"error":"Run with Vercel Dev to use CMS authentication and publishing locally."}'))
+      continue
+    }
     $candidate = [IO.Path]::GetFullPath((Join-Path $siteRoot $requestPath.TrimStart('/')))
+    if (Test-Path -LiteralPath $candidate -PathType Container) {
+      $candidate = Join-Path $candidate 'index.html'
+    }
     if (-not [IO.Path]::HasExtension($candidate) -and -not (Test-Path -LiteralPath $candidate -PathType Leaf)) {
       $candidate = "$candidate.html"
     }

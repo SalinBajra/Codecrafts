@@ -93,6 +93,9 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.14, rootMargin: '0px 0px -7% 0px' });
 
 document.querySelectorAll('.reveal').forEach((node) => observer.observe(node));
+document.addEventListener('codecrafts:content-ready', () => {
+  document.querySelectorAll('.reveal:not(.visible)').forEach((node) => observer.observe(node));
+});
 
 const art = document.querySelector('.hero-art');
 if (art && matchMedia('(pointer:fine)').matches && !reducedMotion) {

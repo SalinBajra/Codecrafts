@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>CodeCrafts CMS</title>
+  <link rel="icon" href="/assets/favicon-32.png" sizes="32x32">
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+  <main class="login-view" id="login-view">
+    <form class="login-card" id="login-form">
+      <div class="admin-brand"><img src="/assets/codecrafts-mark-white.png" alt=""><span>CodeCrafts</span></div>
+      <p class="eyebrow">Content management</p>
+      <h1>Welcome back.</h1>
+      <p>Sign in to edit and publish the CodeCrafts website.</p>
+      <label>Admin password<input id="password" name="password" type="password" autocomplete="current-password" required></label>
+      <button type="submit">Open CMS</button>
+      <p class="form-message" id="login-message" role="status"></p>
+    </form>
+  </main>
+
+  <div class="cms-app" id="cms-app" hidden>
+    <aside class="cms-sidebar">
+      <a class="admin-brand" href="/" target="_blank" rel="noopener"><img src="/assets/codecrafts-mark-white.png" alt=""><span>CodeCrafts</span></a>
+      <div class="sidebar-title"><p>Website CMS</p><span>Edit content without touching code.</span></div>
+      <nav id="cms-nav" aria-label="CMS sections"></nav>
+      <div class="sidebar-bottom">
+        <a href="/" target="_blank" rel="noopener">View website</a>
+        <button type="button" id="logout-button">Sign out</button>
+      </div>
+    </aside>
+
+    <main class="cms-main">
+      <header class="cms-header">
+        <div><p class="eyebrow" id="section-eyebrow">Website content</p><h1 id="section-title">General</h1></div>
+        <div class="publish-area">
+          <span class="save-state" id="save-state">Saved</span>
+          <button class="publish-button" id="publish-button" type="button">Publish changes</button>
+        </div>
+      </header>
+
+      <div class="cms-notice" id="cms-notice" hidden></div>
+      <section class="editor" id="editor" aria-live="polite"></section>
+    </main>
+  </div>
+
+  <template id="loading-template"><div class="loading"><span></span><p>Loading website content...</p></div></template>
+  <script src="/admin/admin.js" defer></script>
+</body>
+</html>
