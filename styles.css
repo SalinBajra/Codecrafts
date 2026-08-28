@@ -1079,6 +1079,7 @@ html[data-theme="dark"] .approved-hero + .client-rail{background:transparent;bor
   .approved-devices{height:350px}.approved-laptop{top:22px;width:calc(100% - 34px)}.approved-laptop-screen{border-width:5px;border-bottom-width:7px;border-radius:12px 12px 6px 6px}.approved-screen-brand{left:5%;top:7%}.approved-screen-brand img{width:18px;height:18px}.approved-screen-brand b{font-size:7px}.approved-screen-menu{width:20px;height:20px}.approved-screen-copy{left:5%;top:25%;width:44%}.approved-screen-copy h2{font-size:14px}.approved-screen-copy p{margin-top:10px;font-size:6px}.approved-screen-copy a{height:24px;margin-top:10px;padding:0 8px;font-size:6px}.approved-project-stack img{width:43%;border-radius:4px}.approved-laptop-base{height:13px}.approved-phone{right:0;bottom:13px;width:92px;height:184px;padding:4px;border-radius:22px}.approved-phone-island{top:7px;width:29px;height:7px}.approved-phone-screen{padding:18px 7px 7px;border-radius:17px}.approved-phone-brand img{width:13px;height:13px}.approved-phone-brand b{font-size:6px}.approved-phone-screen>small{margin-top:8px;font-size:4px}.approved-phone-screen>p{margin-top:4px;font-size:7px}.approved-phone-image{height:52px;margin-top:6px;border-radius:3px}.approved-phone-proof{gap:3px;margin-top:5px;font-size:5px}.approved-phone-proof i{width:4px;height:4px;flex-basis:4px}
   .approved-hero + .client-rail{width:calc(100% - 30px);margin-bottom:40px;padding:19px 0 23px}.approved-hero + .client-rail .client-rail-group{width:100%;grid-template-columns:repeat(3,minmax(0,1fr))}
 }
+
 @media(prefers-reduced-motion:reduce){.approved-button,.approved-button span{transition:none}}
 
 /* Device fidelity and proof scale from the final approved visual. */
@@ -1121,4 +1122,30 @@ html[data-theme="dark"] .approved-hero + .client-rail{background:transparent;bor
   .approved-project-stack .approved-project-card>div{padding:5px 4px}.approved-project-card b{font-size:4px}.approved-project-card small{margin-top:3px;font-size:4px}.approved-project-card span{font-size:3px}.approved-project-yala small{font-size:5px}
   .approved-benefits{grid-template-columns:1fr;gap:13px;margin-top:25px}.approved-benefit{grid-template-columns:40px 1fr}.benefit-icon{width:40px;height:40px}.approved-benefit b{font-size:12px}.approved-benefit small{font-size:10px;margin-top:3px}
   .approved-hero + .client-rail>p{gap:12px;font-size:13px}.approved-hero + .client-rail .client-bottu .client-logo{width:110px;height:45px}.approved-hero + .client-rail .client-yala .client-logo{width:56px;height:70px}.approved-hero + .client-rail .client-geeta .client-logo{width:54px;height:44px}
+}
+
+/* Photorealistic device shell. Screen UI stays live HTML so brand copy and project
+   imagery remain exact rather than being baked into an AI-rendered screen. */
+.approved-devices{aspect-ratio:1536/1024;height:auto;align-self:center}
+.approved-device-hardware{position:absolute;z-index:1;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none}
+.approved-laptop{position:absolute;z-index:2;inset:0;width:auto;filter:none;transform:none}
+.approved-laptop-screen{position:absolute;left:29.15%;top:7.45%;width:55.15%;height:58.15%;margin:0;aspect-ratio:auto;border:0;border-radius:0;clip-path:polygon(7.5% 0,100% 1.2%,89.2% 100%,0 89.2%);box-shadow:none}
+.approved-laptop-base{display:none}
+.approved-phone{position:absolute;z-index:3;left:76.15%;right:auto;top:35.4%;bottom:auto;width:15.55%;height:45.9%;padding:1.15% .72% .85%;border-radius:12% / 7%;background:transparent;box-shadow:none;transform:rotate(1.05deg);clip-path:polygon(8% 0,91% 2%,100% 95%,0 100%)}
+.approved-phone-island{top:2.2%;width:34%;height:3.6%}
+.approved-phone-screen{padding:10% 8% 5%;border-radius:10% / 5%}
+
+@media(max-width:900px){
+  .approved-devices{width:min(100%,760px);height:auto}
+  .approved-laptop{inset:0;width:auto;transform:none}
+  .approved-laptop-screen{left:29.15%;top:7.45%;width:55.15%;height:58.15%;margin:0}
+  .approved-phone{left:76.15%;right:auto;top:35.4%;bottom:auto;width:15.55%;height:45.9%}
+}
+@media(max-width:600px){
+  .approved-devices{height:auto}
+  .approved-laptop{inset:0;width:auto;transform:none}
+  .approved-laptop-screen{left:29.15%;top:7.45%;width:55.15%;height:58.15%;margin:0;border:0;border-radius:0}
+  .approved-phone{left:76.15%;right:auto;top:35.4%;bottom:auto;width:15.55%;height:45.9%;padding:1.15% .72% .85%;border-radius:12% / 7%}
+  .approved-phone-island{top:2.2%;width:34%;height:3.6%}
+  .approved-phone-screen{padding:10% 8% 5%;border-radius:10% / 5%}
 }
