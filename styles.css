@@ -879,3 +879,119 @@ html[data-theme="dark"] .workbench-status{background:rgba(24,24,31,.9)}
   .preview-phone{right:-1px;bottom:29px;width:90px;height:194px;padding:5px;border-radius:23px}
   .workbench-status{bottom:3px}
 }
+
+/* Stronger reference composition: compact stage, layered product previews, proof strip. */
+@media(min-width:1101px){
+  .hero-editorial{
+    min-height:560px;
+    grid-template-columns:minmax(440px,.78fr) minmax(650px,1.22fr);
+    gap:clamp(30px,3vw,52px);
+    padding-top:24px;
+    padding-bottom:24px;
+  }
+  .hero-editorial .hero-copy{align-self:center;padding-bottom:34px}
+  .hero-editorial .hero-copy:before{
+    content:"Strategy  •  Design  •  Development";
+    display:inline-flex;
+    margin-bottom:24px;
+    padding:8px 12px;
+    border:1px solid color-mix(in srgb,var(--violet) 30%,transparent);
+    border-radius:999px;
+    color:var(--violet);
+    background:color-mix(in srgb,var(--violet) 5%,transparent);
+    font-size:9px;
+    font-weight:750;
+    letter-spacing:.045em;
+    text-transform:uppercase;
+  }
+  .hero-editorial h1{max-width:610px;font-size:clamp(56px,4.55vw,72px);line-height:.94}
+  .hero-editorial .hero-foot{margin-top:28px}
+  .hero-workbench{height:510px}
+  .dev-laptop{left:-4%;right:18px;top:8px}
+  .preview-phone{right:-10px;bottom:22px;width:148px;height:312px}
+  .workbench-status{left:-1%;bottom:5px}
+}
+.dev-screen{position:relative}
+.dev-screen:before,.dev-screen:after{
+  content:"";
+  position:absolute;
+  z-index:5;
+  right:5%;
+  width:31%;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:7px;
+  background-color:#17141f;
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:top center;
+  box-shadow:0 16px 34px rgba(0,0,0,.34);
+  pointer-events:none;
+}
+.dev-screen:before{top:20%;height:27%;background-image:url("assets/yala-homepage.png");transform:rotate(-1deg)}
+.dev-screen:after{right:7%;bottom:7%;height:22%;background-image:url("assets/geeta-homepage-real.png");transform:rotate(1deg)}
+.code-pane{right:auto;left:5%;top:auto;bottom:7%;width:38%;height:39%}
+.build-preview p{max-width:310px}
+
+@media(min-width:1101px){
+  .client-rail{
+    width:min(1500px,calc(100% - 72px));
+    min-height:74px;
+    margin:-28px auto 48px;
+    padding:10px 0;
+    display:grid;
+    grid-template-columns:minmax(320px,.78fr) minmax(650px,1.22fr);
+    align-items:center;
+  }
+  .client-rail>p{margin:0;text-align:left;padding-left:0;font-size:12px}
+  .client-rail-window{justify-content:flex-start}
+  .client-rail-group{justify-content:start}
+}
+@media(max-width:1100px){
+  .hero-editorial .hero-copy:before{
+    content:"Strategy  •  Design  •  Development";
+    display:inline-flex;
+    margin-bottom:22px;
+    padding:7px 11px;
+    border:1px solid color-mix(in srgb,var(--violet) 30%,transparent);
+    border-radius:999px;
+    color:var(--violet);
+    font-size:9px;
+    font-weight:750;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+  }
+}
+@media(max-width:720px){
+  .hero-editorial .hero-copy:before{margin-bottom:18px;font-size:8px;padding:6px 9px}
+  .dev-screen:before{top:19%;right:4%;width:32%;height:25%}
+  .dev-screen:after{right:5%;bottom:7%;width:32%;height:21%}
+  .code-pane{left:5%;bottom:7%;width:39%;height:39%}
+}
+
+/* Reference geometry: top-led copy, dominant device, proof kept beneath the copy. */
+@media(min-width:1101px){
+  .hero-editorial{min-height:548px;padding-top:16px;padding-bottom:18px}
+  .hero-editorial .hero-copy{align-self:start;padding:18px 0 0}
+  .hero-editorial .hero-copy:before{margin-bottom:22px}
+  .hero-editorial h1{font-size:clamp(54px,4.35vw,68px);max-width:590px}
+  .hero-editorial .hero-foot{margin-top:26px}
+  .hero-workbench{height:514px;align-self:start}
+  .dev-laptop{left:-4%;right:4px;top:0;transform:perspective(1600px) rotateY(-2.8deg) rotateX(.4deg)}
+  .preview-phone{right:-18px;bottom:18px;width:150px;height:316px}
+  .workbench-status{left:-2%;bottom:54px;z-index:7;background:rgba(255,255,255,.92)}
+  html[data-theme="dark"] .workbench-status{background:rgba(24,24,31,.92)}
+  .client-rail{
+    width:520px;
+    min-height:86px;
+    margin:-108px 0 80px max(36px,calc((100vw - 1500px)/2));
+    padding:0;
+    display:block;
+  }
+  .client-rail>p{margin:0 0 17px;padding:0;text-align:left;font-size:12px}
+  .client-rail-window{justify-content:flex-start}
+  .client-rail-track{width:auto}
+  .client-rail-group{grid-template-columns:repeat(3,126px);justify-content:start}
+  .client-bottu .client-logo{width:116px;height:44px}
+  .client-yala .client-logo{width:52px;height:60px;transform:translateX(7px)}
+  .client-geeta .client-logo{width:52px;height:44px}
+}
