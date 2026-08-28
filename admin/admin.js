@@ -146,9 +146,12 @@
     editor.append(loadingTemplate.content.cloneNode(true));
     const result = await request('/api/cms-content');
     content = result.content;
-    notice.hidden = result.source === 'supabase';
+    notice.hidden = result.source !== 'fallback';
     if (result.source === 'fallback') notice.textContent = 'The CMS is showing the built-in website content. Connect Supabase before publishing changes.';
-    if (result.source === 'supabase-empty') notice.textContent = 'Supabase is connected. Your first publish will create the live content record.';
+    if (result.source === 'supabase-empty') {
+      saveState.textContent = 'Ready for first publish';
+      saveState.className = 'save-state success';
+    }
     renderNav();
     render();
     updatePreviewPage();
