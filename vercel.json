@@ -7,7 +7,7 @@
     {"source": "/index", "destination": "/", "permanent": true}
   ],
   "rewrites": [
-    {"source": "/admin/:section", "destination": "/admin/index.html"}
+    {"source": "/admin/:section", "destination": "/admin"}
   ],
   "headers": [
     {"source": "/admin/(.*)", "headers": [
