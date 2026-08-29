@@ -22,17 +22,15 @@ button{cursor:pointer}
 .login-card button{width:100%;height:50px;margin-top:14px}
 .form-message{min-height:20px;margin:14px 0 0;color:var(--danger);font-size:12px}
 .cms-app{height:100vh;display:grid;grid-template-columns:var(--cms-sidebar) var(--cms-editor) minmax(480px,1fr);overflow:hidden}
-.cms-sidebar{position:sticky;top:0;height:100vh;padding:24px 18px 18px;border-right:1px solid var(--line);background:rgba(8,8,12,.92);backdrop-filter:blur(18px);display:flex;flex-direction:column}
+.cms-sidebar{position:sticky;top:0;height:100vh;padding:20px 18px 18px;border-right:1px solid var(--line);background:rgba(8,8,12,.92);backdrop-filter:blur(18px);display:flex;flex-direction:column}
 .cms-sidebar>.admin-brand{padding:0 8px}
-.sidebar-title{margin:34px 8px 18px}
-.sidebar-title p{margin:0 0 5px;font-size:12px;font-weight:750}
-.sidebar-title span{color:#777483;font-size:11px;line-height:1.5}
-.sidebar-context{margin:18px 8px;padding:0 0 18px;border-bottom:1px solid var(--line)}
-.sidebar-context p{margin:0 0 7px;color:#777483;font-size:9px;font-weight:700;line-height:1.45;letter-spacing:.07em;text-transform:uppercase}
-.sidebar-context strong{display:block;color:#fff;font-size:18px;line-height:1.15;letter-spacing:-.035em}
-.sidebar-context .save-state{display:block;margin-top:9px}
-#cms-nav{display:grid;gap:4px}
-#cms-nav button{display:flex;align-items:center;gap:11px;width:100%;padding:11px 13px;border:0;border-radius:9px;background:transparent;color:#9794a3;text-align:left;font-size:13px;font-weight:600}
+.sidebar-context{margin:26px 8px 14px;padding:0 0 14px;border-bottom:1px solid var(--line)}
+.sidebar-context p{margin:0 0 7px;color:#777483;font-size:9px;font-weight:700;line-height:1.35;letter-spacing:.06em;text-transform:uppercase}
+.sidebar-context>div{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.sidebar-context strong{display:block;color:#fff;font-size:17px;line-height:1.15;letter-spacing:-.035em}
+.sidebar-context .save-state{flex:0 0 auto;font-size:9px}
+#cms-nav{display:grid;gap:2px}
+#cms-nav button{display:flex;align-items:center;gap:11px;width:100%;padding:10px 13px;border:0;border-radius:9px;background:transparent;color:#9794a3;text-align:left;font-size:13px;font-weight:600}
 #cms-nav button::before{content:'';width:7px;height:7px;border:1px solid #53505f;border-radius:50%}
 #cms-nav button:hover{background:#15141d;color:#fff}
 #cms-nav button.active{background:#1d192c;color:#fff}
@@ -102,7 +100,7 @@ button{cursor:pointer}
 @media(max-width:1450px) and (min-width:1181px){:root{--cms-sidebar:190px;--cms-editor:clamp(430px,34vw,490px)}.cms-main{padding-inline:24px}.preview-sizes button{padding-inline:7px}}
 @media(max-width:1180px) and (min-width:821px){.cms-app{grid-template-columns:210px minmax(0,1fr)}.cms-preview{display:none}.mobile-preview-link{display:inline}.field-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:1180px){.publish-area{left:auto;right:22px;transform:none}}
-@media(max-width:820px){.cms-app{display:block;width:100%;height:auto;max-width:100%;overflow:hidden}.cms-sidebar{position:static;width:100%;min-width:0;max-width:100%;height:auto;padding:16px;border-right:0;border-bottom:1px solid var(--line);overflow:hidden}.cms-sidebar>.admin-brand,.sidebar-title{display:none}.sidebar-context{margin:0 0 13px;padding:0 4px 13px;display:flex;align-items:baseline;justify-content:space-between;gap:16px}.sidebar-context p{margin:0}.sidebar-context strong{font-size:17px}.sidebar-context .save-state{display:none}#cms-nav{display:flex;width:100%;min-width:0;max-width:100%;overflow-x:auto;overflow-y:hidden;padding-bottom:3px}#cms-nav button{flex:0 0 auto;width:auto;white-space:nowrap}.sidebar-bottom{display:none}.cms-main{width:100%;height:auto;min-width:0;max-width:100%;padding:24px 16px 100px;overflow:hidden}.publish-area{right:16px;bottom:16px;gap:9px}.publish-button{padding:10px 12px;font-size:11px}.cms-notice,.editor{width:100%;min-width:0;max-width:100%}.field-grid{grid-template-columns:minmax(0,1fr)}.field{grid-column:1;min-width:0}.editor-group{padding:17px}.login-card{padding:28px}.media-field{grid-template-columns:1fr}.media-upload{height:40px}.cms-preview{display:none}}
+@media(max-width:820px){.cms-app{display:block;width:100%;height:auto;max-width:100%;overflow:hidden}.cms-sidebar{position:static;width:100%;min-width:0;max-width:100%;height:auto;padding:16px;border-right:0;border-bottom:1px solid var(--line);overflow:hidden}.cms-sidebar>.admin-brand{display:none}.sidebar-context{margin:0 0 10px;padding:0 4px 10px}.sidebar-context p{margin:0 0 4px}.sidebar-context strong{font-size:17px}.sidebar-context .save-state{display:none}#cms-nav{display:flex;width:100%;min-width:0;max-width:100%;overflow-x:auto;overflow-y:hidden;padding-bottom:3px}#cms-nav button{flex:0 0 auto;width:auto;white-space:nowrap}.sidebar-bottom{display:none}.cms-main{width:100%;height:auto;min-width:0;max-width:100%;padding:24px 16px 100px;overflow:hidden}.publish-area{right:16px;bottom:16px;gap:9px}.publish-button{padding:10px 12px;font-size:11px}.cms-notice,.editor{width:100%;min-width:0;max-width:100%}.field-grid{grid-template-columns:minmax(0,1fr)}.field{grid-column:1;min-width:0}.editor-group{padding:17px}.login-card{padding:28px}.media-field{grid-template-columns:1fr}.media-upload{height:40px}.cms-preview{display:none}}
 
 @media(max-width:820px){.mobile-preview-link{display:inline}.editor-group{padding:0}.content-panel__body{padding:16px}.cms-sidebar{padding-block:14px}.cms-main{width:100vw;max-width:100vw}.cms-header{width:100vw;display:grid;grid-template-columns:minmax(0,1fr) auto}.cms-notice,.editor{width:calc(100vw - 32px);max-width:calc(100vw - 32px)}.field input,.field textarea{min-width:0;max-width:100%}}
 @media(max-width:520px){.cms-header{align-items:center}.cms-header h1{font-size:20px}.mobile-preview-link{display:inline;font-size:10px}.publish-button{min-width:82px;min-height:38px;padding:9px 11px;font-size:0}.publish-button::after{content:'Publish';font-size:11px}.publish-button[data-publishing="true"]::after{content:'Publishing…'}.content-panel>summary{padding:15px 16px}.repeater-item{padding:14px}}

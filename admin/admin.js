@@ -4,10 +4,10 @@
     ['about', 'About'], ['contact', 'Contact'], ['seo', 'SEO']
   ];
   const descriptions = {
-    site: 'Shared brand, header and footer content', home: 'Homepage copy, links and imagery',
-    work: 'Portfolio introduction, projects and closing CTA', services: 'Service offers, fit criteria and FAQs',
-    about: 'Studio story, values and invitation', contact: 'Contact introduction and form choices',
-    seo: 'Search titles and descriptions for every page'
+    site: 'Brand, header and footer', home: 'Copy, links and imagery',
+    work: 'Projects and closing action', services: 'Offers, fit and FAQs',
+    about: 'Story, values and invitation', contact: 'Copy and form options',
+    seo: 'Page titles and search descriptions'
   };
   const labels = {
     titleMain: 'Main title', titleAccent: 'Accent title', description: 'Description', primaryLabel: 'Primary button label',
@@ -142,7 +142,7 @@
       return renderPrimitive(key, value ?? '', nextPath);
     }).join('');
     if (!wrap) return fields;
-    return `<div class="editor-group"><div class="group-heading"><div><h2>${escape(friendly(path[path.length - 1]))}</h2><p>${escape(descriptions[path[path.length - 1]] || 'Edit and publish this website content.')}</p></div></div><div class="field-grid">${fields}</div></div>`;
+    return `<div class="editor-group"><div class="field-grid">${fields}</div></div>`;
   }
 
   function render() {
