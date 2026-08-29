@@ -342,5 +342,11 @@
     locateEditorPath(event.data.path);
   });
 
-  request('/api/cms-session').then((result) => result.authenticated ? openApp() : null).catch(() => null);
+  const initialLoginButton = loginForm.querySelector('button');
+  initialLoginButton.disabled = true;
+  if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+    request('/api/cms-session').then((result) => result.authenticated ? openApp() : null).catch(() => null).finally(() => { initialLoginButton.disabled = false; });
+  } else {
+    request('/api/cms-logout', { method: 'POST', body: '{}' }).catch(() => null).finally(() => { initialLoginButton.disabled = false; });
+  }
 })();
