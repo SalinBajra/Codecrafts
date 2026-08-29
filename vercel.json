@@ -6,6 +6,9 @@
   "redirects": [
     {"source": "/index", "destination": "/", "permanent": true}
   ],
+  "rewrites": [
+    {"source": "/admin/:section", "destination": "/admin/index.html"}
+  ],
   "headers": [
     {"source": "/admin/(.*)", "headers": [
       {"key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive"},

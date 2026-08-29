@@ -26,6 +26,7 @@ while ($true) {
     $rawPath = if ($parts.Length -gt 1) { $parts[1] } else { '/' }
     $requestPath = [Uri]::UnescapeDataString(([Uri]::new("http://localhost$rawPath")).AbsolutePath)
     if ($requestPath -eq '/') { $requestPath = '/index.html' }
+    if ($requestPath -match '^/admin/(site|home|work|services|about|contact|seo)/?$') { $requestPath = '/admin/index.html' }
     if ($requestPath -eq '/api/content') {
       $contentFile = Join-Path $siteRoot 'content\site-content.json'
       Send-Response $stream '200 OK' 'application/json; charset=utf-8' ([IO.File]::ReadAllBytes($contentFile))

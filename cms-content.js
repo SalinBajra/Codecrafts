@@ -137,7 +137,7 @@
   async function load() {
     const controller = new AbortController(); const timer = setTimeout(() => controller.abort(), 3500);
     try {
-      const response = await fetch('/api/content', { signal: controller.signal, headers: { accept: 'application/json' } });
+      const response = await fetch(`/api/content?v=${Date.now()}`, { cache: 'no-store', signal: controller.signal, headers: { accept: 'application/json', 'cache-control': 'no-cache' } });
       if (!response.ok) return;
       applyContent(await response.json());
     } catch (_) { /* Static HTML remains the resilient fallback. */ }

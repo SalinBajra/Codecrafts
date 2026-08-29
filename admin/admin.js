@@ -39,7 +39,8 @@
   const previewClose = document.querySelector('#preview-close');
   const previewCanvas = document.querySelector('.preview-canvas');
   let content = null;
-  let activeSection = sections.some(([key]) => key === location.hash.slice(1)) ? location.hash.slice(1) : 'site';
+  const routeSection = location.pathname.split('/').filter(Boolean).pop();
+  let activeSection = sections.some(([key]) => key === routeSection) ? routeSection : 'site';
   let dirty = false;
   let previewTimer = 0;
   const previewPages = { site: '/', home: '/', work: '/work', services: '/services', about: '/about', contact: '/contact', seo: '/' };
@@ -191,7 +192,7 @@
     const button = event.target.closest('[data-section]');
     if (!button) return;
     activeSection = button.dataset.section;
-    history.replaceState(null, '', `#${activeSection}`);
+    history.replaceState(null, '', activeSection === 'site' ? '/admin' : `/admin/${activeSection}`);
     render();
     updatePreviewPage();
     window.scrollTo({ top: 0, behavior: 'smooth' });
