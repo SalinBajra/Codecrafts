@@ -20,6 +20,23 @@
     submitLabel: 'Submit button label', serviceOptions: 'Service options', inviteText: 'Invitation text',
     inviteLabel: 'Invitation link label', inviteUrl: 'Invitation URL'
   };
+  const fieldOrder = [
+    'site', 'home', 'work', 'services', 'about', 'contact', 'seo',
+    'intro', 'hero', 'clients', 'problemSection', 'engagements', 'projects', 'fit', 'faq', 'closing',
+    'brandName', 'email', 'headerCtaLabel', 'headerCtaUrl', 'footerLineOne', 'footerLineTwo',
+    'titleMain', 'titleAccent', 'title', 'eyebrow', 'description', 'statement',
+    'primaryLabel', 'primaryUrl', 'secondaryLabel', 'secondaryUrl',
+    'label', 'name', 'email', 'id', 'category', 'url', 'linkLabel',
+    'image', 'imageAlt', 'deviceImage', 'deviceAlt', 'styleClass', 'visitLabel',
+    'challenge', 'response', 'tags', 'bullets', 'cards', 'items', 'values',
+    'afterLaunchEyebrow', 'afterLaunchTitle', 'afterLaunchUrl',
+    'buttonLabel', 'buttonUrl', 'inviteText', 'inviteLabel', 'inviteUrl',
+    'serviceOptions', 'submitLabel'
+  ];
+  const orderedEntries = (object) => Object.entries(object).sort(([left], [right]) => {
+    const leftRank = fieldOrder.indexOf(left); const rightRank = fieldOrder.indexOf(right);
+    return (leftRank < 0 ? 999 : leftRank) - (rightRank < 0 ? 999 : rightRank);
+  });
 
   const loginView = document.querySelector('#login-view');
   const app = document.querySelector('#cms-app');
@@ -116,7 +133,7 @@
   }
 
   function renderObject(object, path, wrap = true) {
-    const fields = Object.entries(object).filter(([key]) => !['version', 'updatedAt'].includes(key)).map(([key, value]) => {
+    const fields = orderedEntries(object).filter(([key]) => !['version', 'updatedAt'].includes(key)).map(([key, value]) => {
       const nextPath = [...path, key];
       if (Array.isArray(value)) return renderArray(key, value, nextPath);
       if (value && typeof value === 'object') {
