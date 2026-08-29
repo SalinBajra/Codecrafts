@@ -452,7 +452,7 @@ footer:after{line-height:1;bottom:26px}
 .after-launch-link i{font-size:18px;color:var(--violet)}
 
 /* The final action is deliberately two columns; the button never becomes a floating third item. */
-.home-closing{min-height:330px;margin-top:86px;padding:58px 64px;grid-template-columns:minmax(0,1fr) auto;gap:64px;background:radial-gradient(circle at 82% 12%,rgba(114,85,245,.2),transparent 30rem),linear-gradient(120deg,#111117,#08080b)}
+.home-closing{min-height:330px;margin-top:36px;padding:58px 64px;grid-template-columns:minmax(0,1fr) auto;gap:64px;background:radial-gradient(circle at 82% 12%,rgba(114,85,245,.2),transparent 30rem),linear-gradient(120deg,#111117,#08080b)}
 .home-closing-copy{position:relative;z-index:2}
 .home-closing h2{max-width:760px;font-size:clamp(48px,5.2vw,72px);line-height:.94}
 .home-closing-copy>span{display:block;max-width:600px;margin-top:24px;color:#aaaab4;font-size:15px;line-height:1.65}
@@ -695,7 +695,7 @@ html[data-theme="dark"] .client-bottu .client-logo img{filter:invert(1) grayscal
   .engagements{width:calc(100% - 20px);padding:70px 0 14px}.engagements-head{margin-bottom:28px;padding:0 10px;text-align:left}.engagements-head h2{font-size:clamp(40px,11.4vw,48px)}
   .engagement-grid{grid-template-columns:1fr;gap:10px}.engagement-card{min-height:380px;padding:26px;border-radius:18px}.engagement-card h3{font-size:clamp(37px,10.5vw,46px)}.engagement-card small{font-size:14px}.engagement-card:hover{transform:none}
   .after-launch-link{min-height:112px;margin-top:10px;padding:20px;grid-template-columns:1fr auto;gap:6px 18px}.after-launch-link span{grid-column:1/-1}.after-launch-link strong{font-size:16px}.after-launch-link:hover{transform:none}
-  .home-closing{width:calc(100% - 20px);min-height:auto;margin-top:62px;padding:34px 24px;gap:30px;border-radius:18px}.home-closing h2{font-size:clamp(40px,11vw,48px)}.home-closing-copy>span{font-size:14px}.home-closing .round-link{min-height:52px;padding:0 20px}
+  .home-closing{width:calc(100% - 20px);min-height:auto;margin-top:32px;padding:34px 24px;gap:30px;border-radius:18px}.home-closing h2{font-size:clamp(40px,11vw,48px)}.home-closing-copy>span{font-size:14px}.home-closing .round-link{min-height:52px;padding:0 20px}
 }
 
 /* Motion direction: quiet sequencing and spatial continuity, never cursor decoration. */
