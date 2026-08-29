@@ -26,6 +26,10 @@
       <a class="admin-brand" href="/" target="_blank" rel="noopener"><img src="/assets/codecrafts-mark-white.png" alt=""><span>CodeCrafts</span></a>
       <div class="sidebar-title"><p>Website CMS</p><span>Edit content without touching code.</span></div>
       <nav id="cms-nav" aria-label="CMS sections"></nav>
+      <div class="sidebar-context">
+        <p id="section-eyebrow">Website content</p>
+        <strong id="section-title">General</strong>
+      </div>
       <div class="sidebar-bottom">
         <a href="/" target="_blank" rel="noopener">View website</a>
         <button type="button" id="logout-button">Sign out</button>
@@ -33,17 +37,13 @@
     </aside>
 
     <main class="cms-main">
-      <header class="cms-header">
-        <div><p class="eyebrow" id="section-eyebrow">Website content</p><h1 id="section-title">General</h1></div>
-        <div class="publish-area">
-          <span class="save-state" id="save-state">Saved</span>
-          <button class="mobile-preview-link" id="mobile-preview-button" type="button">Live preview</button>
-          <button class="publish-button" id="publish-button" type="button" disabled>Publish changes</button>
-        </div>
-      </header>
-
       <div class="cms-notice" id="cms-notice" hidden></div>
       <section class="editor" id="editor" aria-live="polite"></section>
+      <div class="publish-area">
+        <span class="save-state" id="save-state">Saved</span>
+        <button class="mobile-preview-link" id="mobile-preview-button" type="button">Live preview</button>
+        <button class="publish-button" id="publish-button" type="button" disabled>Publish changes</button>
+      </div>
     </main>
 
     <section class="cms-preview" aria-label="Live website preview">
