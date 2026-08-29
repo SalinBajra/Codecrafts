@@ -110,7 +110,7 @@
     }
     const items = value.map((item, index) => {
       const title = item.title || item.question || item.id || `${friendly(key)} ${index + 1}`;
-      return `<div class="repeater-item"><div class="group-heading"><div><h3>${escape(title)}</h3><p>Item ${index + 1}</p></div><div class="item-actions"><button class="icon-button" type="button" data-move="${escape(pathString(path))}" data-index="${index}" data-direction="-1" aria-label="Move up">↑</button><button class="icon-button" type="button" data-move="${escape(pathString(path))}" data-index="${index}" data-direction="1" aria-label="Move down">↓</button><button class="icon-button danger" type="button" data-remove="${escape(pathString(path))}" data-index="${index}" aria-label="Remove">×</button></div></div><div class="field-grid">${renderObject(item, [...path, index], false)}</div></div>`;
+      return `<div class="repeater-item" data-cms-group="${escape(pathString([...path, index]))}"><div class="group-heading"><div><h3>${escape(title)}</h3><p>Item ${index + 1}</p></div><div class="item-actions"><button class="icon-button" type="button" data-move="${escape(pathString(path))}" data-index="${index}" data-direction="-1" aria-label="Move up">↑</button><button class="icon-button" type="button" data-move="${escape(pathString(path))}" data-index="${index}" data-direction="1" aria-label="Move down">↓</button><button class="icon-button danger" type="button" data-remove="${escape(pathString(path))}" data-index="${index}" aria-label="Remove">×</button></div></div><div class="field-grid">${renderObject(item, [...path, index], false)}</div></div>`;
     }).join('');
     return `<div class="field full"><label>${escape(friendly(key))}</label><div class="repeater">${items}</div><button class="add-button" type="button" data-add="${escape(pathString(path))}" data-kind="object">Add ${escape(friendly(key).replace(/s$/, ''))}</button></div>`;
   }
@@ -120,7 +120,7 @@
       const nextPath = [...path, key];
       if (Array.isArray(value)) return renderArray(key, value, nextPath);
       if (value && typeof value === 'object') {
-        return `<details class="content-panel" open><summary>${escape(friendly(key))}</summary><div class="content-panel__body"><div class="field-grid">${renderObject(value, nextPath, false)}</div></div></details>`;
+        return `<details class="content-panel" data-cms-group="${escape(pathString(nextPath))}" open><summary>${escape(friendly(key))}</summary><div class="content-panel__body"><div class="field-grid">${renderObject(value, nextPath, false)}</div></div></details>`;
       }
       return renderPrimitive(key, value ?? '', nextPath);
     }).join('');
@@ -137,6 +137,34 @@
 
   function renderNav() {
     nav.innerHTML = sections.map(([key, label]) => `<button type="button" data-section="${key}">${label}</button>`).join('');
+  }
+
+  function locateEditorPath(path) {
+    if (!path || typeof path !== 'string') return;
+    const section = path.split('.')[0];
+    if (sections.some(([key]) => key === section) && activeSection !== section) {
+      activeSection = section;
+      history.replaceState(null, '', section === 'site' ? '/admin' : `/admin/${section}`);
+      render();
+    }
+    requestAnimationFrame(() => {
+      const candidates = [...editor.querySelectorAll('[data-field],[data-cms-group]')];
+      let target = candidates.find((node) => node.dataset.field === path);
+      if (!target) {
+        target = candidates
+          .filter((node) => node.dataset.cmsGroup && (path.startsWith(`${node.dataset.cmsGroup}.`) || node.dataset.cmsGroup === path))
+          .sort((a, b) => b.dataset.cmsGroup.length - a.dataset.cmsGroup.length)[0];
+      }
+      if (!target) return;
+      target.closest('details')?.setAttribute('open', '');
+      const highlight = target.closest('.field,.content-panel,.repeater-item') || target;
+      editor.querySelectorAll('.located').forEach((node) => node.classList.remove('located'));
+      highlight.classList.add('located');
+      highlight.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      const control = target.matches('input,textarea') ? target : target.querySelector('input,textarea');
+      setTimeout(() => control?.focus({ preventScroll: true }), 420);
+      setTimeout(() => highlight.classList.remove('located'), 2600);
+    });
   }
 
   async function request(url, options = {}) {
@@ -291,6 +319,11 @@
   });
 
   window.addEventListener('beforeunload', (event) => { if (dirty) { event.preventDefault(); event.returnValue = ''; } });
+
+  window.addEventListener('message', (event) => {
+    if (event.origin !== location.origin || event.data?.type !== 'codecrafts:cms-locate') return;
+    locateEditorPath(event.data.path);
+  });
 
   request('/api/cms-session').then((result) => result.authenticated ? openApp() : null).catch(() => null);
 })();
