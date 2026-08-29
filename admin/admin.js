@@ -35,6 +35,9 @@
   const loadingTemplate = document.querySelector('#loading-template');
   const previewFrame = document.querySelector('#preview-frame');
   const openPreview = document.querySelector('#open-preview');
+  const mobilePreviewButton = document.querySelector('#mobile-preview-button');
+  const previewClose = document.querySelector('#preview-close');
+  const previewCanvas = document.querySelector('.preview-canvas');
   let content = null;
   let activeSection = sections.some(([key]) => key === location.hash.slice(1)) ? location.hash.slice(1) : 'site';
   let dirty = false;
@@ -53,6 +56,7 @@
 
   function markDirty() {
     dirty = true;
+    publishButton.disabled = false;
     saveState.textContent = 'Unpublished changes';
     saveState.className = 'save-state dirty';
     clearTimeout(previewTimer);
@@ -115,7 +119,7 @@
       const nextPath = [...path, key];
       if (Array.isArray(value)) return renderArray(key, value, nextPath);
       if (value && typeof value === 'object') {
-        return `<div class="field full"><div class="editor-group"><div class="group-heading"><div><h3>${escape(friendly(key))}</h3><p>Edit this content group</p></div></div><div class="field-grid">${renderObject(value, nextPath, false)}</div></div></div>`;
+        return `<details class="content-panel" open><summary>${escape(friendly(key))}</summary><div class="content-panel__body"><div class="field-grid">${renderObject(value, nextPath, false)}</div></div></details>`;
       }
       return renderPrimitive(key, value ?? '', nextPath);
     }).join('');
@@ -146,6 +150,8 @@
     editor.append(loadingTemplate.content.cloneNode(true));
     const result = await request('/api/cms-content');
     content = result.content;
+    dirty = false;
+    publishButton.disabled = true;
     notice.hidden = result.source !== 'fallback';
     if (result.source === 'fallback') notice.textContent = 'The CMS is showing the built-in website content. Connect Supabase before publishing changes.';
     if (result.source === 'supabase-empty') {
@@ -238,6 +244,7 @@
   publishButton.addEventListener('click', async () => {
     if (!dirty) return;
     publishButton.disabled = true;
+    publishButton.dataset.publishing = 'true';
     publishButton.textContent = 'Publishing...';
     try {
       const result = await request('/api/cms-content', { method: 'PUT', body: JSON.stringify({ content }) });
@@ -251,7 +258,8 @@
       notice.hidden = false;
       notice.textContent = error.message;
     } finally {
-      publishButton.disabled = false;
+      publishButton.dataset.publishing = 'false';
+      publishButton.disabled = !dirty;
       publishButton.textContent = 'Publish changes';
     }
   });
@@ -262,6 +270,24 @@
   });
 
   previewFrame?.addEventListener('load', () => setTimeout(sendPreview, 80));
+
+  mobilePreviewButton?.addEventListener('click', () => {
+    app.classList.add('preview-open');
+    document.body.style.overflow = 'hidden';
+    sendPreview();
+  });
+
+  previewClose?.addEventListener('click', () => {
+    app.classList.remove('preview-open');
+    document.body.style.overflow = '';
+  });
+
+  document.querySelector('.preview-sizes')?.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-preview-size]');
+    if (!button) return;
+    previewCanvas.dataset.previewSize = button.dataset.previewSize;
+    document.querySelectorAll('[data-preview-size]').forEach((item) => item.classList.toggle('active', item === button));
+  });
 
   window.addEventListener('beforeunload', (event) => { if (dirty) { event.preventDefault(); event.returnValue = ''; } });
 

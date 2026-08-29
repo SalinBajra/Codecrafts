@@ -37,7 +37,8 @@
         <div><p class="eyebrow" id="section-eyebrow">Website content</p><h1 id="section-title">General</h1></div>
         <div class="publish-area">
           <span class="save-state" id="save-state">Saved</span>
-          <button class="publish-button" id="publish-button" type="button">Publish changes</button>
+          <button class="mobile-preview-link" id="mobile-preview-button" type="button">Live preview</button>
+          <button class="publish-button" id="publish-button" type="button" disabled>Publish changes</button>
         </div>
       </header>
 
@@ -48,9 +49,19 @@
     <section class="cms-preview" aria-label="Live website preview">
       <header class="preview-header">
         <div class="preview-status"><span aria-hidden="true"></span><div><strong>Live preview</strong><small>Only you can see unpublished changes</small></div></div>
-        <a id="open-preview" href="/" target="_blank" rel="noopener">Open page <span aria-hidden="true">↗</span></a>
+        <div class="preview-actions">
+          <div class="preview-sizes" aria-label="Preview size">
+            <button class="active" type="button" data-preview-size="desktop">Desktop</button>
+            <button type="button" data-preview-size="tablet">Tablet</button>
+            <button type="button" data-preview-size="mobile">Mobile</button>
+          </div>
+          <a id="open-preview" href="/" target="_blank" rel="noopener">Open page <span aria-hidden="true">↗</span></a>
+          <button class="preview-close" id="preview-close" type="button" aria-label="Close live preview">Close</button>
+        </div>
       </header>
-      <iframe id="preview-frame" src="/" title="CodeCrafts live website preview"></iframe>
+      <div class="preview-canvas" data-preview-size="desktop">
+        <iframe id="preview-frame" src="/" title="CodeCrafts live website preview"></iframe>
+      </div>
     </section>
   </div>
 
