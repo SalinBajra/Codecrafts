@@ -1,6 +1,5 @@
 @font-face{font-family:"Manrope Variable";src:url("assets/vendor/manrope-latin-variable.woff2") format("woff2");font-weight:200 800;font-style:normal;font-display:swap}
 :root{--ink:#101014;--paper:#f6f5f2;--surface:#fff;--soft:#ecebea;--line:#d7d5d2;--violet:#7255f5;--violet-soft:#e8e2ff;--muted:#66656b;--white:#fff;--radius:10px;color-scheme:light}
-html.cms-loading body{visibility:hidden}
 html[data-theme="dark"]{--ink:#f2f0eb;--paper:#0e0e11;--surface:#17171b;--soft:#1d1d22;--line:#34343b;--violet:#9b83ff;--violet-soft:#28213f;--muted:#aaa8b0;--white:#17171b;color-scheme:dark}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:hidden}
