@@ -58,17 +58,7 @@
     const site = content.site || {};
     all('.brand b,.footer-brand b').forEach((node) => { if (site.brandName) node.textContent = brandCopy(site.brandName); mark(node, 'site.brandName'); });
     updateLink(one('.header-cta'), brandCopy(site.headerCtaLabel), site.headerCtaUrl, 'site.headerCtaLabel');
-    const footer = one('footer > p');
-    if (footer) {
-      // Keep the footer deliberately compact: the headline is no longer part of
-      // the public footer. CMS hydration must not recreate the legacy <strong>
-      // element after the page script removes it.
-      const legacyHeadline = one('strong', footer);
-      if (legacyHeadline) legacyHeadline.remove();
-      text('span', brandCopy(site.footerLineTwo), footer, 'site.footerLineTwo');
-      const email = one('a', footer);
-      if (email && site.email) { email.href = `mailto:${site.email}`; if (email.firstChild) email.firstChild.textContent = `${site.email} `; mark(email, 'site.email'); }
-    }
+    // Footer copy is intentionally static and is not controlled by the CMS.
   }
 
   function applyHome(home) {
@@ -132,7 +122,17 @@
     const list = one('.detail-list');
     const serviceItems = [...(Array.isArray(services.items) ? services.items : [])];
     serviceAdditions.forEach((addition) => { if (!serviceItems.some((item) => item.id === addition.id)) serviceItems.push(addition); });
-    if (list) list.replaceChildren(...serviceItems.map((item, index) => {
+    const coreItems = serviceItems.filter((item) => !['crm-systems', 'ai-agents'].includes(item.id));
+    const featuredItems = serviceItems.filter((item) => ['crm-systems', 'ai-agents'].includes(item.id));
+    const featured = one('.featured-services-grid');
+    if (featured) featured.replaceChildren(...featuredItems.map((item, index) => {
+      const article = el('article', `featured-service ${item.id || ''}`.trim());
+      article.id = `featured-${item.id || index}`;
+      article.append(el('span', 'featured-service-kicker', item.id === 'crm-systems' ? 'CRM systems' : 'AI agents'), el('h2', '', brandCopy(item.title)), el('p', '', brandCopy(item.description)));
+      const bullets = el('ul'); (item.bullets || []).slice(0, 3).forEach((bullet) => bullets.append(el('li', '', brandCopy(bullet))));
+      article.append(bullets); mark(article, `services.items.${serviceItems.indexOf(item)}`); return article;
+    }));
+    if (list) list.replaceChildren(...coreItems.map((item, index) => {
       const article = el('article', 'reveal'); article.id = item.id || ''; const body = el('div'); body.append(el('h2', '', brandCopy(item.title)), el('p', '', brandCopy(item.description)));
       const bullets = el('ul'); (item.bullets || []).forEach((bullet) => bullets.append(el('li', '', brandCopy(bullet)))); body.append(bullets); article.append(body); mark(article, `services.items.${index}`); return article;
     }));

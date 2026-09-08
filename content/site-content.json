@@ -132,9 +132,9 @@
   },
   "services": {
     "intro": {
-      "titleMain": "Website strategy.",
-      "titleAccent": "Design to launch.",
-      "description": "From the website customers see to the CRM and AI workflows behind it, we connect strategy, design and technology into one accountable system."
+      "titleMain": "IT systems.",
+      "titleAccent": "Built to move work forward.",
+      "description": "From customer-facing websites to the systems behind them, we connect practical technology with the way your team actually works."
     },
     "items": [
       {"id": "direction", "title": "Clarify the direction.", "description": "We turn a business goal into a clear message, structure and plan before pixels or code.", "bullets": ["Audience and competitor review", "Positioning and content priorities", "User journeys and page structure"]},

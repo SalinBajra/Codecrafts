@@ -5,9 +5,9 @@ document.documentElement.classList.add('motion-ready');
 // The public brand is CodeCraft. Set it immediately so the static shell never
 // flashes the legacy plural name while CMS content is loading.
 document.querySelectorAll('.brand b,.footer-brand b').forEach((node) => { node.textContent = 'CodeCraft'; });
-// Footer content is owned by the CMS hydrator below. Do not write a legacy
-// fallback here: doing so races the CMS request and can make stale content
-// appear after a refresh when the request is slow or unavailable.
+const footerCopy = document.querySelector('footer > p');
+if (footerCopy) footerCopy.innerHTML = 'IT services &amp; digital solutions company.<br>Based in Nepal. Working worldwide.';
+// Keep this copy static so CMS responses cannot replace it with stale data.
 const footerNav = document.querySelector('footer > div:nth-of-type(2)');
 if (footerNav && !document.querySelector('.footer-social')) {
   const social = document.createElement('div');
