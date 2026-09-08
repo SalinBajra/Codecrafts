@@ -163,6 +163,7 @@
   function applyContent(content) {
     applySeo(content); applyCommon(content); normalizeBrand();
     if (page === 'home') applyHome(content.home); if (page === 'work') applyWork(content.work); if (page === 'services') applyServices(content.services); if (page === 'about') applyAbout(content.about); if (page === 'contact') applyContact(content.contact);
+    document.documentElement.classList.remove('cms-loading');
     document.dispatchEvent(new CustomEvent('codecrafts:content-ready'));
   }
 
@@ -188,7 +189,7 @@
       if (!response.ok) return;
       applyContent(await response.json());
     } catch (_) { /* Static HTML remains the resilient fallback. */ }
-    finally { clearTimeout(timer); }
+    finally { clearTimeout(timer); document.documentElement.classList.remove('cms-loading'); }
   }
   window.addEventListener('message', (event) => {
     if (event.origin !== location.origin || event.data?.type !== 'codecrafts:cms-preview' || !event.data.content) return;

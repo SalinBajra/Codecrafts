@@ -1,3 +1,5 @@
+document.documentElement.classList.add('cms-loading');
+window.setTimeout(() => document.documentElement.classList.remove('cms-loading'), 4500);
 try {
   const requestedTheme = new URLSearchParams(location.search).get('theme');
   const savedTheme = localStorage.getItem('codecrafts-theme');
