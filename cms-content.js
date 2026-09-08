@@ -2,6 +2,10 @@
   const pageName = (location.pathname.split('/').filter(Boolean).pop() || 'index').replace(/\.html$/, '');
   const page = pageName === 'index' ? 'home' : pageName;
   const brandCopy = (value) => value == null ? value : String(value).replace(/\bCodeCrafts\b/g, 'CodeCraft');
+  const serviceAdditions = [
+    { id: 'crm-systems', title: 'Connect the work behind the website.', description: 'Lightweight CRM systems that keep leads, projects and follow-ups moving without spreadsheet sprawl.', bullets: ['Lead capture and pipeline design', 'Contact, project and follow-up workflows', 'Email, calendar and form integrations', 'Team permissions, reporting and handover'] },
+    { id: 'ai-agents', title: 'Put repetitive work on autopilot.', description: 'Practical AI agents for enquiries, calls and internal workflows—with a clear human handoff when judgment matters.', bullets: ['Website and WhatsApp enquiry agents', 'Voice agents for inbound calls', 'Lead qualification and appointment booking', 'Monitoring, refinement and safe escalation'] }
+  ];
   const one = (selector, root = document) => root.querySelector(selector);
   const all = (selector, root = document) => [...root.querySelectorAll(selector)];
   const mark = (node, path) => { if (node && path) node.dataset.cmsPath = path; return node; };
@@ -104,7 +108,9 @@
     if (!services) return;
     applyIntro(services.intro, 'services.intro');
     const list = one('.detail-list');
-    if (list && Array.isArray(services.items)) list.replaceChildren(...services.items.map((item, index) => {
+    const serviceItems = [...(Array.isArray(services.items) ? services.items : [])];
+    serviceAdditions.forEach((addition) => { if (!serviceItems.some((item) => item.id === addition.id)) serviceItems.push(addition); });
+    if (list) list.replaceChildren(...serviceItems.map((item, index) => {
       const article = el('article', 'reveal'); article.id = item.id || ''; const body = el('div'); body.append(el('h2', '', brandCopy(item.title)), el('p', '', brandCopy(item.description)));
       const bullets = el('ul'); (item.bullets || []).forEach((bullet) => bullets.append(el('li', '', brandCopy(bullet)))); body.append(bullets); article.append(body); mark(article, `services.items.${index}`); return article;
     }));

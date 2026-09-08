@@ -249,6 +249,11 @@ footer small{padding-right:min(48vw,650px)}
   footer{padding-bottom:26px}footer:after{position:static;grid-column:auto;margin-top:4px;font-size:15.2vw;line-height:.76;letter-spacing:-.085em;-webkit-text-stroke-color:rgba(255,255,255,.14);transform:none}footer small{padding-right:0}
 }
 
+/* Final footer treatment: keep the brand legible and remove the oversized outline wordmark. */
+footer:after{display:none!important}
+footer .footer-brand{width:auto;height:auto;display:flex;align-items:center;gap:12px;background:transparent;box-shadow:none}
+footer .footer-brand b{position:static!important;width:auto!important;height:auto!important;padding:0!important;margin:0!important;overflow:visible!important;clip:auto!important;white-space:nowrap!important;border:0!important;color:#fff;font-size:20px;letter-spacing:-.045em}
+
 /* Hero composition: proof belongs to the story, not in a separate empty band. */
 @media(min-width:1001px){
   .hero{min-height:565px;padding-top:18px;padding-bottom:0;align-items:center}
