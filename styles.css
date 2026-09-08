@@ -253,6 +253,22 @@ footer small{padding-right:min(48vw,650px)}
 footer:after{display:none!important}
 footer .footer-brand{width:auto;height:auto;display:flex;align-items:center;gap:12px;background:transparent;box-shadow:none}
 footer .footer-brand b{position:static!important;width:auto!important;height:auto!important;padding:0!important;margin:0!important;overflow:visible!important;clip:auto!important;white-space:nowrap!important;border:0!important;color:#fff;font-size:20px;letter-spacing:-.045em}
+footer{padding-top:46px;padding-bottom:24px;gap:28px 56px}
+footer>p strong{font-size:clamp(26px,2.5vw,36px)}
+footer>p span{font-size:14px}
+footer small{margin-top:10px}
+.footer-social{display:flex;align-items:center;gap:10px;margin-top:16px}
+.footer-social a{width:32px;height:32px;border:1px solid rgba(255,255,255,.18);border-radius:50%;display:grid;place-items:center;color:#d9d5e4;transition:transform .2s,border-color .2s,color .2s}
+.footer-social a:hover{transform:translateY(-2px);border-color:#9b83ff;color:#b7a5ff}
+.footer-social svg{width:15px;height:15px;fill:currentColor}
+.home-capabilities{display:grid;grid-template-columns:180px 1fr;align-items:center;gap:34px;margin-top:34px;padding:24px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.home-capabilities>p{margin:0;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:750}
+.home-capabilities>div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.home-capabilities a{display:flex;flex-direction:column;gap:5px;color:var(--ink);transition:color .2s}
+.home-capabilities a:hover{color:var(--violet)}
+.home-capabilities strong{font-size:17px;letter-spacing:-.025em}
+.home-capabilities span{color:var(--muted);font-size:13px}
+@media(max-width:720px){.home-capabilities{grid-template-columns:1fr;gap:16px;margin-top:26px;padding:20px 0}.home-capabilities>div{grid-template-columns:1fr;gap:16px}.home-capabilities strong{font-size:16px}}
 
 /* Hero composition: proof belongs to the story, not in a separate empty band. */
 @media(min-width:1001px){
