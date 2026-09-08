@@ -1,4 +1,7 @@
 (() => {
+  // The public website is intentionally static. CMS runs separately on the
+  // CRM subdomain and must never overwrite public page content.
+  if (document.documentElement.dataset.publicStatic === 'true') return;
   const pageName = (location.pathname.split('/').filter(Boolean).pop() || 'index').replace(/\.html$/, '');
   const page = pageName === 'index' ? 'home' : pageName;
   const brandCopy = (value) => value == null ? value : String(value).replace(/\bCodeCrafts\b/g, 'CodeCraft');
