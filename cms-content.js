@@ -3,7 +3,7 @@
   const page = pageName === 'index' ? 'home' : pageName;
   const brandCopy = (value) => value == null ? value : String(value).replace(/\bCodeCrafts\b/g, 'CodeCraft');
   const serviceAdditions = [
-    { id: 'crm-systems', title: 'Connect the work behind the website.', description: 'Lightweight CRM systems that keep leads, projects and follow-ups moving without spreadsheet sprawl.', bullets: ['Lead capture and pipeline design', 'Contact, project and follow-up workflows', 'Email, calendar and form integrations', 'Team permissions, reporting and handover'] },
+    { id: 'crm-systems', title: 'Organise the work behind it.', description: 'A CRM shaped around your team, so enquiries, projects and follow-ups do not disappear between tools.', bullets: ['Lead capture and pipeline design', 'Follow-up and handover workflows', 'Email, calendar and form connections'] },
     { id: 'ai-agents', title: 'Put repetitive work on autopilot.', description: 'Practical AI agents for enquiries, calls and internal workflows—with a clear human handoff when judgment matters.', bullets: ['Website and WhatsApp enquiry agents', 'Voice agents for inbound calls', 'Lead qualification and appointment booking', 'Monitoring, refinement and safe escalation'] }
   ];
   const one = (selector, root = document) => root.querySelector(selector);
@@ -27,6 +27,23 @@
     node.href = linkUrl(url, fallback);
     mark(node, path);
   };
+
+  function normalizeBrand() {
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while (walker.nextNode()) {
+      const node = walker.currentNode;
+      if (!node.parentElement || /^(SCRIPT|STYLE|NOSCRIPT)$/.test(node.parentElement.tagName)) continue;
+      nodes.push(node);
+    }
+    nodes.forEach((node) => { node.nodeValue = node.nodeValue.replace(/\bCodeCrafts\b/g, 'CodeCraft'); });
+    document.querySelectorAll('[title],[alt],meta[content]').forEach((node) => {
+      ['title','alt','content'].forEach((attribute) => {
+        if (node.hasAttribute(attribute)) node.setAttribute(attribute, node.getAttribute(attribute).replace(/\bCodeCrafts\b/g, 'CodeCraft'));
+      });
+    });
+    document.title = document.title.replace(/\bCodeCrafts\b/g, 'CodeCraft');
+  }
 
   function applySeo(content) {
     const seo = content.seo?.[page];
@@ -143,7 +160,7 @@
   }
 
   function applyContent(content) {
-    applySeo(content); applyCommon(content);
+    applySeo(content); applyCommon(content); normalizeBrand();
     if (page === 'home') applyHome(content.home); if (page === 'work') applyWork(content.work); if (page === 'services') applyServices(content.services); if (page === 'about') applyAbout(content.about); if (page === 'contact') applyContact(content.contact);
     document.dispatchEvent(new CustomEvent('codecrafts:content-ready'));
   }

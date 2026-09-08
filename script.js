@@ -2,6 +2,9 @@ const menu = document.querySelector('.menu');
 const nav = document.querySelector('#nav');
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 document.documentElement.classList.add('motion-ready');
+// The public brand is CodeCraft. Set it immediately so the static shell never
+// flashes the legacy plural name while CMS content is loading.
+document.querySelectorAll('.brand b,.footer-brand b').forEach((node) => { node.textContent = 'CodeCraft'; });
 const footerCopy = document.querySelector('footer > p');
 if (footerCopy) {
   footerCopy.innerHTML = '<strong>Strategy-led websites for growing businesses.</strong><span>Web design, responsive development and technical SEO from one accountable team in Nepal.</span><a href="mailto:hello@codecrafts.studio">hello@codecrafts.studio <b aria-hidden="true">↗︎</b></a><small>Based in Nepal · working worldwide</small>';

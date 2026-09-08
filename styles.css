@@ -1401,6 +1401,29 @@ html[data-theme="dark"] .approved-hero + .client-rail{background:transparent;bor
   .approved-hero + .client-rail .client-geeta .client-logo{width:48px;height:48px}
 }
 
+/* Final compact footer: keep the contact surface useful without a second hero. */
+footer {
+  min-height: 0;
+  padding: 34px max(24px, calc((100% - 1280px) / 2)) 20px;
+  grid-template-columns: auto minmax(220px, 1fr) auto;
+  gap: 20px 48px;
+  align-items: start;
+}
+footer:before, footer:after { display: none !important; }
+footer > p { max-width: 260px; padding: 0; gap: 7px; font-size: 13px; line-height: 1.45; }
+footer > p strong { display: none !important; }
+footer > p span { max-width: none; font-size: 13px; }
+footer > p a { margin-top: 3px; font-size: 14px; }
+footer > div:nth-of-type(2) { width: 210px; gap: 3px 18px; }
+footer > div:nth-of-type(2) a { padding: 5px 0; font-size: 14px; }
+footer small { margin-top: 8px; font-size: 11px; }
+@media (max-width: 720px) {
+  footer { padding: 30px 20px 18px; grid-template-columns: 1fr auto; gap: 18px 24px; }
+  footer > p { grid-column: 1 / -1; }
+  footer > div:nth-of-type(2) { grid-column: 1 / -1; width: 100%; }
+  footer small { grid-column: 1 / -1; margin-top: 0; }
+}
+
 /* User-specified hero proportions, mapped to the existing static classes. */
 .approved-hero{
   grid-template-columns:minmax(0,42%) minmax(0,58%);
