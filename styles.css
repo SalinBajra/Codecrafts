@@ -1749,10 +1749,10 @@ footer>div:nth-of-type(2) .footer-social{grid-column:2;order:2;margin-top:0;just
 .contact-copy>a.external-link>span.contact-email-secondary{display:block!important;grid-column:1;grid-row:2;width:max-content;height:auto;margin:8px 0 0;position:static;border:0;border-bottom:1px solid var(--ink);padding:0 0 3px;color:var(--muted);font-size:16px;line-height:1.4}
 .contact-copy>a.external-link>span[aria-hidden="true"]{display:none!important}
 .contact-copy>a.external-link:before,.contact-copy>a.external-link:after{display:none!important}
-footer>div:nth-of-type(2){position:relative;min-height:0}
-footer>div:nth-of-type(2) .footer-email-menu{position:absolute;right:132px;bottom:0;display:block;margin:0;grid-column:auto}
-footer>div:nth-of-type(2) .footer-social{position:absolute;right:0;bottom:0;display:flex;margin:0;grid-column:auto}
-@media(max-width:720px){footer>div:nth-of-type(2){min-height:0}footer>div:nth-of-type(2) .footer-email-menu{right:124px}footer>div:nth-of-type(2) .footer-social{right:0}}
+footer>div:nth-of-type(2){position:static;min-height:0}
+footer .footer-email-menu{position:absolute;right:170px;bottom:22px;display:block;margin:0;grid-column:auto}
+footer .footer-social{position:absolute;right:32px;bottom:22px;display:flex;margin:0;grid-column:auto}
+@media(max-width:720px){footer .footer-email-menu,footer .footer-social{position:static;margin-top:12px}footer .footer-email-menu{grid-column:1}footer .footer-social{grid-column:2}}
 .detail-list h2,.featured-service h2,.goal-grid h3,.engagement-card h3{font-weight:680}
 
 /* Homepage brand typography and deterministic CTA icons. */
