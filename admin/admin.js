@@ -60,6 +60,10 @@
   let activeSection = sections.some(([key]) => key === routeSection) ? routeSection : 'site';
   let dirty = false;
   let previewTimer = 0;
+  const serviceMigrations = [
+    { id: 'crm-systems', title: 'Connect the work behind the website.', description: 'Lightweight CRM systems that keep leads, projects and follow-ups moving without spreadsheet sprawl.', bullets: ['Lead capture and pipeline design', 'Contact, project and follow-up workflows', 'Email, calendar and form integrations', 'Team permissions, reporting and handover'] },
+    { id: 'ai-agents', title: 'Put repetitive work on autopilot.', description: 'Practical AI agents for enquiries, calls and internal workflows—with a clear human handoff when judgment matters.', bullets: ['Website and WhatsApp enquiry agents', 'Voice agents for inbound calls', 'Lead qualification and appointment booking', 'Monitoring, refinement and safe escalation'] }
+  ];
   const previewPages = { site: '/', home: '/', work: '/work', services: '/services', about: '/about', contact: '/contact', seo: '/' };
 
   const friendly = (key) => labels[key] || String(key).replace(/([A-Z])/g, ' $1').replace(/[-_]/g, ' ').trim();
@@ -196,8 +200,15 @@
     editor.append(loadingTemplate.content.cloneNode(true));
     const result = await request('/api/cms-content');
     content = result.content;
-    dirty = false;
-    publishButton.disabled = true;
+    const existingServices = Array.isArray(content.services?.items) ? content.services.items : [];
+    const missingServices = serviceMigrations.filter((item) => !existingServices.some((current) => current.id === item.id));
+    if (missingServices.length) {
+      content.services.items = [...existingServices, ...missingServices];
+      dirty = true;
+      saveState.textContent = 'New service content ready to publish';
+      saveState.className = 'save-state dirty';
+    } else dirty = false;
+    publishButton.disabled = !dirty;
     notice.hidden = result.source !== 'fallback';
     if (result.source === 'fallback') notice.textContent = 'The CMS is showing the built-in website content. Connect Supabase before publishing changes.';
     if (result.source === 'supabase-empty') {
