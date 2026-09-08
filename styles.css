@@ -1405,7 +1405,7 @@ html[data-theme="dark"] .approved-hero + .client-rail{background:transparent;bor
 footer {
   min-height: 0;
   padding: 34px max(24px, calc((100% - 1280px) / 2)) 20px;
-  grid-template-columns: auto minmax(220px, 1fr) auto;
+  grid-template-columns: minmax(230px, 280px) minmax(300px, 1fr) 220px;
   gap: 20px 48px;
   align-items: start;
 }
@@ -1423,6 +1423,11 @@ footer small { margin-top: 8px; font-size: 11px; }
   footer > p { grid-column: 1 / -1; }
   footer > div:nth-of-type(2) { grid-column: 1 / -1; width: 100%; }
   footer small { grid-column: 1 / -1; margin-top: 0; }
+}
+@media (min-width: 721px) and (max-width: 1000px) {
+  footer { grid-template-columns: minmax(190px, 0.8fr) minmax(0, 1.2fr); }
+  footer > div:nth-of-type(2) { grid-column: 2; justify-self: start; }
+  footer small { grid-column: 1 / -1; }
 }
 
 /* User-specified hero proportions, mapped to the existing static classes. */
