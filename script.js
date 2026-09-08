@@ -192,34 +192,6 @@ const emailChoices = [
   ['sales@madebycodecraft.com', 'mailto:sales@madebycodecraft.com']
 ];
 
-document.querySelectorAll('footer').forEach((footer) => {
-  if (footer.querySelector('.footer-email-menu')) return;
-  const menu = document.createElement('div');
-  menu.className = 'footer-email-menu';
-  menu.innerHTML = '<button type="button" class="footer-email-trigger" aria-label="Choose an email address" aria-expanded="false"><span aria-hidden="true"></span></button><div class="footer-email-options" role="menu" aria-label="Email addresses"></div>';
-  const options = menu.querySelector('.footer-email-options');
-  emailChoices.forEach(([label, href]) => {
-    const link = document.createElement('a');
-    link.href = href;
-    link.textContent = label;
-    link.setAttribute('role', 'menuitem');
-    options.append(link);
-  });
-  const trigger = menu.querySelector('.footer-email-trigger');
-  trigger.addEventListener('click', () => {
-    const open = menu.classList.toggle('open');
-    trigger.setAttribute('aria-expanded', String(open));
-  });
-  menu.addEventListener('focusout', (event) => {
-    if (!menu.contains(event.relatedTarget)) {
-      menu.classList.remove('open');
-      trigger.setAttribute('aria-expanded', 'false');
-    }
-  });
-  const footerNav = footer.querySelector('div:nth-of-type(2)');
-  (footerNav || footer).append(menu);
-});
-
 const contactEmailLink = document.querySelector('.contact-copy > a.external-link');
 if (contactEmailLink) {
   const contactEmails = document.createElement('div');
