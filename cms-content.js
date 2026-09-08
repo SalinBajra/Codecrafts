@@ -105,14 +105,14 @@
     applyIntro(services.intro, 'services.intro');
     const list = one('.detail-list');
     if (list && Array.isArray(services.items)) list.replaceChildren(...services.items.map((item, index) => {
-      const article = el('article', 'reveal'); article.id = item.id || ''; const body = el('div'); body.append(el('h2', '', item.title), el('p', '', item.description));
-      const bullets = el('ul'); (item.bullets || []).forEach((bullet) => bullets.append(el('li', '', bullet))); body.append(bullets); article.append(body); mark(article, `services.items.${index}`); return article;
+      const article = el('article', 'reveal'); article.id = item.id || ''; const body = el('div'); body.append(el('h2', '', brandCopy(item.title)), el('p', '', brandCopy(item.description)));
+      const bullets = el('ul'); (item.bullets || []).forEach((bullet) => bullets.append(el('li', '', brandCopy(bullet)))); body.append(bullets); article.append(body); mark(article, `services.items.${index}`); return article;
     }));
-    text('.fit-panel h2', services.fit?.title, document, 'services.fit.title'); const fit = one('.fit-panel > ul'); if (fit) { fit.replaceChildren(...(services.fit?.bullets || []).map((bullet) => el('li', '', bullet))); mark(fit, 'services.fit.bullets'); }
-    updateLink(one('.fit-panel .button'), services.fit?.buttonLabel, services.fit?.buttonUrl, 'services.fit.buttonLabel'); text('.faq-intro h2', services.faq?.title, document, 'services.faq.title'); text('.faq-intro p', services.faq?.description, document, 'services.faq.description');
+    text('.fit-panel h2', brandCopy(services.fit?.title), document, 'services.fit.title'); const fit = one('.fit-panel > ul'); if (fit) { fit.replaceChildren(...(services.fit?.bullets || []).map((bullet) => el('li', '', brandCopy(bullet)))); mark(fit, 'services.fit.bullets'); }
+    updateLink(one('.fit-panel .button'), brandCopy(services.fit?.buttonLabel), services.fit?.buttonUrl, 'services.fit.buttonLabel'); text('.faq-intro h2', brandCopy(services.faq?.title), document, 'services.faq.title'); text('.faq-intro p', brandCopy(services.faq?.description), document, 'services.faq.description');
     const faqs = one('.faq-list');
     if (faqs && Array.isArray(services.faq?.items)) faqs.replaceChildren(...services.faq.items.map((item, index) => {
-      const details = el('details'); const summary = el('summary', '', item.question); const plus = el('span', '', '+'); plus.setAttribute('aria-hidden', 'true'); summary.append(plus); details.append(summary, el('p', '', item.answer)); mark(details, `services.faq.items.${index}`); return details;
+      const details = el('details'); const summary = el('summary', '', brandCopy(item.question)); const plus = el('span', '', '+'); plus.setAttribute('aria-hidden', 'true'); summary.append(plus); details.append(summary, el('p', '', brandCopy(item.answer))); mark(details, `services.faq.items.${index}`); return details;
     }));
   }
 
