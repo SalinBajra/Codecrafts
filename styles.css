@@ -1719,10 +1719,17 @@ em,.approved-hero h1 em,.page-intro h1 em,.featured-services-heading h2 em,.clos
 .page-intro>p:last-child,.approved-intro{max-width:620px;font-size:clamp(17px,1.5vw,21px);line-height:1.65;color:var(--muted)}
 .eyebrow,.featured-services-heading>span,.featured-service-kicker{letter-spacing:.04em;text-transform:none}
 .contact-copy .external-link{display:grid!important;grid-template-columns:max-content 13px;grid-template-rows:auto auto;align-items:center;column-gap:10px;row-gap:7px}
+.contact-copy>a.external-link{width:max-content;border-bottom:0!important}
 .contact-copy .external-link .contact-email-secondary{grid-column:1;grid-row:2;display:block;position:static;width:auto;height:auto;margin:0;color:var(--muted);font-size:.78em;font-weight:650;letter-spacing:0;border:0;transform:none}
+.contact-copy .external-link .contact-email-secondary{border-bottom:1px solid var(--line);padding-bottom:4px}
 .contact-copy .external-link .contact-email-secondary:before{content:none}
 .contact-copy .external-link .contact-email-secondary:hover{transform:none}
 .contact-copy .external-link>span[aria-hidden="true"]{grid-column:2;grid-row:1}
+.contact-copy>a.external-link{position:relative;display:inline-flex!important;width:52px;height:52px;margin-top:30px;border:1px solid var(--line)!important;border-radius:50%;align-items:center;justify-content:center;color:var(--ink);font-size:0;line-height:1}
+.contact-copy>a.external-link>span{display:none!important}
+.contact-copy>a.external-link:before{content:"";width:20px;height:14px;border:1.8px solid currentColor;border-radius:3px;background:linear-gradient(145deg,transparent 48%,currentColor 49%,currentColor 53%,transparent 54%),linear-gradient(215deg,transparent 48%,currentColor 49%,currentColor 53%,transparent 54%);background-size:50% 100%,50% 100%;background-position:left top,right top;background-repeat:no-repeat}
+.contact-copy>a.external-link:after{content:"info@madebycodecraft.com\A sales@madebycodecraft.com";position:absolute;z-index:5;left:0;top:calc(100% + 12px);padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);box-shadow:0 12px 30px rgba(15,15,20,.12);color:var(--ink);font-size:14px;font-weight:650;line-height:1.7;white-space:pre;opacity:0;pointer-events:none;transform:translateY(-5px);transition:opacity .2s,transform .2s}
+.contact-copy>a.external-link:hover:after,.contact-copy>a.external-link:focus-visible:after{opacity:1;transform:none}
 .detail-list h2,.featured-service h2,.goal-grid h3,.engagement-card h3{font-weight:680}
 
 /* Homepage brand typography and deterministic CTA icons. */
