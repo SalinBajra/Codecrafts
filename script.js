@@ -216,7 +216,8 @@ document.querySelectorAll('footer').forEach((footer) => {
       trigger.setAttribute('aria-expanded', 'false');
     }
   });
-  footer.append(menu);
+  const footerNav = footer.querySelector('div:nth-of-type(2)');
+  (footerNav || footer).append(menu);
 });
 
 const contactEmailLink = document.querySelector('.contact-copy > a.external-link');
