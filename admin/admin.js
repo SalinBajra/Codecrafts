@@ -209,8 +209,10 @@
       saveState.className = 'save-state dirty';
     } else dirty = false;
     publishButton.disabled = !dirty;
-    notice.hidden = result.source !== 'fallback';
-    if (result.source === 'fallback') notice.textContent = 'The CMS is showing the built-in website content. Connect Supabase before publishing changes.';
+    notice.hidden = result.source === 'supabase';
+    if (result.source === 'fallback' || result.source === 'supabase-stale') notice.textContent = result.source === 'supabase-stale'
+      ? 'The database content is older than this site release. Review the current content and publish it to re-enable live CMS updates.'
+      : 'The CMS is showing the built-in website content. Connect Supabase before publishing changes.';
     if (result.source === 'supabase-empty') {
       saveState.textContent = 'Ready for first publish';
       saveState.className = 'save-state success';

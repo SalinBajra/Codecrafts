@@ -20,7 +20,11 @@ module.exports = async (req, res) => {
     const next = { ...content, version: Number(content.version || 0) + 1, updatedAt: new Date().toISOString() };
     try {
       await writeContent(next);
-      return json(res, 200, { ok: true, content: next });
+      const saved = await readContent();
+      if (saved.source !== 'supabase' || saved.content?.version !== next.version || saved.content?.updatedAt !== next.updatedAt) {
+        return json(res, 503, { error: 'Publish could not be verified. The live CMS record did not match the saved update.' });
+      }
+      return json(res, 200, { ok: true, content: saved.content });
     } catch (error) {
       return json(res, 503, { error: error.message || 'Could not publish content.' });
     }
