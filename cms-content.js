@@ -43,7 +43,12 @@
     updateLink(one('.header-cta'), brandCopy(site.headerCtaLabel), site.headerCtaUrl, 'site.headerCtaLabel');
     const footer = one('footer > p');
     if (footer) {
-      text('strong', brandCopy(site.footerLineOne), footer, 'site.footerLineOne'); text('span', brandCopy(site.footerLineTwo), footer, 'site.footerLineTwo');
+      // Keep the footer deliberately compact: the headline is no longer part of
+      // the public footer. CMS hydration must not recreate the legacy <strong>
+      // element after the page script removes it.
+      const legacyHeadline = one('strong', footer);
+      if (legacyHeadline) legacyHeadline.remove();
+      text('span', brandCopy(site.footerLineTwo), footer, 'site.footerLineTwo');
       const email = one('a', footer);
       if (email && site.email) { email.href = `mailto:${site.email}`; if (email.firstChild) email.firstChild.textContent = `${site.email} `; mark(email, 'site.email'); }
     }
