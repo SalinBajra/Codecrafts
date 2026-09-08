@@ -3,7 +3,7 @@
   "updatedAt": null,
   "site": {
     "brandName": "CodeCraft",
-    "email": "hello@codecrafts.studio",
+    "email": "info@madebycodecraft.com",
     "headerCtaLabel": "Start a project",
     "headerCtaUrl": "/contact",
     "footerLineOne": "IT services & digital solutions company.",
@@ -183,7 +183,7 @@
   "contact": {
     "title": "What should your website do better?",
     "description": "Tell us about the business goal, the current website and what customers should find easier. Whether you need clearer direction, a complete responsive build or focused improvements, you do not need a finished brief to begin.",
-    "email": "hello@codecrafts.studio",
+    "email": "info@madebycodecraft.com",
     "serviceOptions": ["Website clarity review", "Website direction", "Complete website", "CRM system", "AI agent or automation", "E-commerce", "After-launch improvements"],
     "submitLabel": "Send website details"
   }

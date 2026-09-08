@@ -180,7 +180,7 @@ if (form) {
       form.reset();
       status.textContent = 'Thank you — we’ll be in touch shortly.';
     } catch (error) {
-      status.textContent = error.message || 'Something went wrong. Please email hello@codecrafts.studio.';
+      status.textContent = error.message || 'Something went wrong. Please email info@madebycodecraft.com.';
     } finally {
       button.disabled = false;
     }

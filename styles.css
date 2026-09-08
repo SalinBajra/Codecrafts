@@ -1718,6 +1718,7 @@ em,.approved-hero h1 em,.page-intro h1 em,.featured-services-heading h2 em,.clos
 .page-intro h1,.approved-hero h1{line-height:.94}
 .page-intro>p:last-child,.approved-intro{max-width:620px;font-size:clamp(17px,1.5vw,21px);line-height:1.65;color:var(--muted)}
 .eyebrow,.featured-services-heading>span,.featured-service-kicker{letter-spacing:.04em;text-transform:none}
+.contact-email-secondary{display:block;margin-top:7px;color:var(--muted);font-size:.78em;font-weight:650;letter-spacing:0}
 .detail-list h2,.featured-service h2,.goal-grid h3,.engagement-card h3{font-weight:680}
 
 /* Homepage brand typography and deterministic CTA icons. */
