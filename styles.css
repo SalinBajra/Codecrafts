@@ -1752,6 +1752,7 @@ footer>div:nth-of-type(2) .footer-social{grid-column:2;order:2;margin-top:0;just
 footer>div:nth-of-type(2){position:static;min-height:0}
 footer .footer-email-menu{position:absolute;right:170px;bottom:22px;display:block;margin:0;grid-column:auto}
 footer .footer-social{position:absolute;right:32px;bottom:22px;display:flex;margin:0;grid-column:auto}
+@media(min-width:1001px){footer>div:nth-of-type(2){width:max-content!important;grid-template-columns:repeat(4,max-content)!important;gap:0 34px!important}footer>div:nth-of-type(2) a{padding:0!important;border:0!important}footer .footer-email-menu{right:170px}footer .footer-social{right:32px}}
 @media(max-width:720px){footer .footer-email-menu,footer .footer-social{position:static;margin-top:12px}footer .footer-email-menu{grid-column:1}footer .footer-social{grid-column:2}}
 .detail-list h2,.featured-service h2,.goal-grid h3,.engagement-card h3{font-weight:680}
 
