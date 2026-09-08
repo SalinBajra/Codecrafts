@@ -4,3 +4,6 @@ try {
   if (requestedTheme === 'dark' || requestedTheme === 'light') document.documentElement.dataset.theme = requestedTheme;
   else if (savedTheme === 'dark' || savedTheme === 'light') document.documentElement.dataset.theme = savedTheme;
 } catch {}
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.brand b,.footer-brand b').forEach((node) => { node.textContent = 'CodeCraft'; });
+});

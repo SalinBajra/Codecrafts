@@ -101,18 +101,22 @@ if (goal && serviceSelect) {
   if (goalServices[goal]) serviceSelect.value = goalServices[goal];
 }
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.14, rootMargin: '0px 0px -7% 0px' });
-
-document.querySelectorAll('.reveal').forEach((node) => observer.observe(node));
+const revealAll = () => document.querySelectorAll('.reveal').forEach((node) => node.classList.add('visible'));
+let observer = null;
+if ('IntersectionObserver' in window) {
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.14, rootMargin: '0px 0px -7% 0px' });
+  document.querySelectorAll('.reveal').forEach((node) => observer.observe(node));
+} else revealAll();
 document.addEventListener('codecrafts:content-ready', () => {
-  document.querySelectorAll('.reveal:not(.visible)').forEach((node) => observer.observe(node));
+  if (observer) document.querySelectorAll('.reveal:not(.visible)').forEach((node) => observer.observe(node));
+  else revealAll();
 });
 
 const art = document.querySelector('.hero-art');

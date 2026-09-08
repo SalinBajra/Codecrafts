@@ -56,7 +56,8 @@
 
   function applyCommon(content) {
     const site = content.site || {};
-    all('.brand b,.footer-brand b').forEach((node) => { if (site.brandName) node.textContent = brandCopy(site.brandName); mark(node, 'site.brandName'); });
+    // The public brand is fixed as CodeCraft. Do not let legacy CMS data
+    // restore the old plural name after a refresh.
     updateLink(one('.header-cta'), brandCopy(site.headerCtaLabel), site.headerCtaUrl, 'site.headerCtaLabel');
     // Footer copy is intentionally static and is not controlled by the CMS.
   }
