@@ -1744,6 +1744,15 @@ em,.approved-hero h1 em,.page-intro h1 em,.featured-services-heading h2 em,.clos
 footer>div:nth-of-type(2) .footer-email-menu{display:flex}
 footer>div:nth-of-type(2) .footer-social{grid-column:2;order:2;margin-top:0;justify-self:end}
 @media(max-width:720px){.contact-direct-emails a{font-size:15px}.footer-email-menu{grid-column:auto}.footer-email-options{bottom:auto;top:calc(100% + 12px)}footer>div:nth-of-type(2) .footer-social{grid-column:2}}
+/* Final contact/footer alignment */
+.contact-copy>a.external-link{display:grid!important;grid-template-columns:max-content;grid-template-rows:auto auto;width:max-content;height:auto;margin-top:30px;border:0!important;border-radius:0;background:none;font-size:16px;line-height:1.4;text-align:left}
+.contact-copy>a.external-link>span.contact-email-secondary{display:block!important;grid-column:1;grid-row:2;width:max-content;height:auto;margin:8px 0 0;position:static;border:0;border-bottom:1px solid var(--ink);padding:0 0 3px;color:var(--muted);font-size:16px;line-height:1.4}
+.contact-copy>a.external-link>span[aria-hidden="true"]{display:none!important}
+.contact-copy>a.external-link:before,.contact-copy>a.external-link:after{display:none!important}
+footer>div:nth-of-type(2){position:relative;min-height:0}
+footer>div:nth-of-type(2) .footer-email-menu{position:absolute;right:132px;bottom:0;display:block;margin:0;grid-column:auto}
+footer>div:nth-of-type(2) .footer-social{position:absolute;right:0;bottom:0;display:flex;margin:0;grid-column:auto}
+@media(max-width:720px){footer>div:nth-of-type(2){min-height:0}footer>div:nth-of-type(2) .footer-email-menu{right:124px}footer>div:nth-of-type(2) .footer-social{right:0}}
 .detail-list h2,.featured-service h2,.goal-grid h3,.engagement-card h3{font-weight:680}
 
 /* Homepage brand typography and deterministic CTA icons. */
