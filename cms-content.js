@@ -1,6 +1,7 @@
 (() => {
   const pageName = (location.pathname.split('/').filter(Boolean).pop() || 'index').replace(/\.html$/, '');
   const page = pageName === 'index' ? 'home' : pageName;
+  const brandCopy = (value) => value == null ? value : String(value).replace(/\bCodeCrafts\b/g, 'CodeCraft');
   const one = (selector, root = document) => root.querySelector(selector);
   const all = (selector, root = document) => [...root.querySelectorAll(selector)];
   const mark = (node, path) => { if (node && path) node.dataset.cmsPath = path; return node; };
@@ -26,19 +27,19 @@
   function applySeo(content) {
     const seo = content.seo?.[page];
     if (!seo) return;
-    if (seo.title) document.title = seo.title;
+    if (seo.title) document.title = brandCopy(seo.title);
     [['meta[name="description"]', 'description'], ['meta[property="og:title"]', 'title'], ['meta[property="og:description"]', 'description'], ['meta[name="twitter:title"]', 'title'], ['meta[name="twitter:description"]', 'description']].forEach(([selector, key]) => {
-      const node = one(selector); if (node && seo[key]) node.content = seo[key];
+      const node = one(selector); if (node && seo[key]) node.content = brandCopy(seo[key]);
     });
   }
 
   function applyCommon(content) {
     const site = content.site || {};
-    all('.brand b,.footer-brand b').forEach((node) => { if (site.brandName) node.textContent = site.brandName; mark(node, 'site.brandName'); });
-    updateLink(one('.header-cta'), site.headerCtaLabel, site.headerCtaUrl, 'site.headerCtaLabel');
+    all('.brand b,.footer-brand b').forEach((node) => { if (site.brandName) node.textContent = brandCopy(site.brandName); mark(node, 'site.brandName'); });
+    updateLink(one('.header-cta'), brandCopy(site.headerCtaLabel), site.headerCtaUrl, 'site.headerCtaLabel');
     const footer = one('footer > p');
     if (footer) {
-      text('strong', site.footerLineOne, footer, 'site.footerLineOne'); text('span', site.footerLineTwo, footer, 'site.footerLineTwo');
+      text('strong', brandCopy(site.footerLineOne), footer, 'site.footerLineOne'); text('span', brandCopy(site.footerLineTwo), footer, 'site.footerLineTwo');
       const email = one('a', footer);
       if (email && site.email) { email.href = `mailto:${site.email}`; if (email.firstChild) email.firstChild.textContent = `${site.email} `; mark(email, 'site.email'); }
     }
@@ -46,7 +47,7 @@
 
   function applyHome(home) {
     if (!home) return;
-    text('.approved-hero h1 span', home.hero?.titleMain, document, 'home.hero.titleMain'); text('.approved-hero h1 em', home.hero?.titleAccent, document, 'home.hero.titleAccent'); text('.approved-intro', home.hero?.description, document, 'home.hero.description');
+    text('.approved-hero h1 span', home.hero?.titleMain, document, 'home.hero.titleMain'); text('.approved-hero h1 em', home.hero?.titleAccent, document, 'home.hero.titleAccent'); text('.approved-intro', brandCopy(home.hero?.description), document, 'home.hero.description');
     const actions = all('.approved-actions a'); updateLink(actions[0], home.hero?.primaryLabel, home.hero?.primaryUrl, 'home.hero.primaryLabel'); updateLink(actions[1], home.hero?.secondaryLabel, home.hero?.secondaryUrl, 'home.hero.secondaryLabel');
     const device = one('.approved-device-composite');
     if (device) { device.src = imageUrl(home.hero?.deviceImage, device.getAttribute('src')); if (home.hero?.deviceAlt) device.alt = home.hero.deviceAlt; mark(device, 'home.hero.deviceImage'); }
@@ -78,7 +79,7 @@
   function applyIntro(intro, basePath) {
     const heading = one('.page-intro h1');
     if (heading && intro) { heading.replaceChildren(document.createTextNode(intro.titleMain || ''), document.createElement('br'), el('em', '', intro.titleAccent)); mark(heading, `${basePath}.titleMain`); mark(one('em', heading), `${basePath}.titleAccent`); }
-    text('.page-intro > p', intro?.description, document, `${basePath}.description`);
+    text('.page-intro > p', brandCopy(intro?.description), document, `${basePath}.description`);
   }
 
   function applyWork(work) {
@@ -94,7 +95,7 @@
       const summary = el('p'); summary.append(el('strong', '', 'Challenge:'), ` ${project.challenge || ''} `, el('strong', '', 'Response:'), ` ${project.response || ''}`);
       const tags = el('div', 'tags'); (project.tags || []).forEach((tag) => tags.append(el('span', '', tag))); meta.append(heading, summary, tags); article.append(imageLink, meta); mark(article, `work.projects.${index}`); return article;
     }));
-    text('.closing > p', work.closing?.eyebrow, document, 'work.closing.eyebrow');
+    text('.closing > p', brandCopy(work.closing?.eyebrow), document, 'work.closing.eyebrow');
     const heading = one('.closing h2'); if (heading) heading.replaceChildren(document.createTextNode(work.closing?.titleMain || ''), document.createElement('br'), el('em', '', work.closing?.titleAccent));
     mark(heading, 'work.closing.titleMain'); updateLink(one('.closing .round-link'), work.closing?.buttonLabel, work.closing?.buttonUrl, 'work.closing.buttonLabel');
   }
@@ -117,14 +118,14 @@
 
   function applyAbout(about) {
     if (!about) return;
-    applyIntro(about.intro, 'about.intro'); text('.about-statement h2', about.statement, document, 'about.statement');
+    applyIntro(about.intro, 'about.intro'); text('.about-statement h2', brandCopy(about.statement), document, 'about.statement');
     const values = one('.values'); if (values && Array.isArray(about.values)) values.replaceChildren(...about.values.map((value, index) => { const article = el('article', 'reveal'); article.append(el('h3', '', value.title), el('p', '', value.description)); mark(article, `about.values.${index}`); return article; }));
-    text('.about-invite p', about.inviteText, document, 'about.inviteText'); updateLink(one('.about-invite a'), about.inviteLabel, about.inviteUrl, 'about.inviteLabel');
+    text('.about-invite p', brandCopy(about.inviteText), document, 'about.inviteText'); updateLink(one('.about-invite a'), brandCopy(about.inviteLabel), about.inviteUrl, 'about.inviteLabel');
   }
 
   function applyContact(contact) {
     if (!contact) return;
-    text('.contact-copy h1', contact.title, document, 'contact.title'); text('.contact-copy > p', contact.description, document, 'contact.description'); updateLink(one('.contact-copy .external-link'), contact.email, `mailto:${contact.email}`, 'contact.email');
+    text('.contact-copy h1', brandCopy(contact.title), document, 'contact.title'); text('.contact-copy > p', brandCopy(contact.description), document, 'contact.description'); updateLink(one('.contact-copy .external-link'), contact.email, `mailto:${contact.email}`, 'contact.email');
     const choices = one('select[name="service"]');
     if (choices && Array.isArray(contact.serviceOptions)) { const placeholder = el('option', '', 'Choose the closest option'); placeholder.value = ''; choices.replaceChildren(placeholder, ...contact.serviceOptions.map((value) => el('option', '', value))); }
     text('.contact-form button[type="submit"]', contact.submitLabel, document, 'contact.submitLabel');

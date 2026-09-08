@@ -2,7 +2,7 @@
   "version": 1,
   "updatedAt": null,
   "site": {
-    "brandName": "CodeCrafts",
+    "brandName": "CodeCraft",
     "email": "hello@codecrafts.studio",
     "headerCtaLabel": "Start a project",
     "headerCtaUrl": "/contact",
@@ -11,37 +11,37 @@
   },
   "seo": {
     "home": {
-      "title": "CodeCrafts | Web Design and Development Studio in Nepal",
-      "description": "CodeCrafts is a web design and development studio in Nepal building distinctive, high-performing websites for growing businesses."
+      "title": "CodeCraft | Web Design and Development Studio in Nepal",
+      "description": "CodeCraft is a web design and development studio in Nepal building distinctive, high-performing websites for growing businesses."
     },
     "work": {
-      "title": "Web Design Work | CodeCrafts Nepal",
-      "description": "Explore responsive websites designed and developed by CodeCrafts for creative production, logistics and fashion retail businesses."
+      "title": "Web Design Work | CodeCraft Nepal",
+      "description": "Explore responsive websites designed and developed by CodeCraft for creative production, logistics and fashion retail businesses."
     },
     "services": {
-      "title": "Website Strategy, Design and Development | CodeCrafts",
-      "description": "Website strategy, UX design, responsive development, technical SEO and after-launch improvements from one focused team."
+      "title": "Websites, CRM Systems and AI Automation | CodeCraft",
+      "description": "CodeCraft connects websites, CRM systems and practical AI automation so growing businesses can attract, manage and serve customers better."
     },
     "about": {
-      "title": "About CodeCrafts | Independent Web Studio in Nepal",
-      "description": "Meet CodeCrafts, an independent web design and development studio in Nepal working with businesses locally and worldwide."
+      "title": "About CodeCraft | Independent Web Studio in Nepal",
+      "description": "Meet CodeCraft, an independent web design and development studio in Nepal working with businesses locally and worldwide."
     },
     "contact": {
-      "title": "Start a Website Project | CodeCrafts",
-      "description": "Tell CodeCrafts what your website should do better and begin with a practical review of your business goal, audience and current experience."
+      "title": "Start a Website Project | CodeCraft",
+      "description": "Tell CodeCraft what your website should do better and begin with a practical review of your business goal, audience and current experience."
     }
   },
   "home": {
     "hero": {
       "titleMain": "Websites built for",
       "titleAccent": "business growth.",
-      "description": "CodeCrafts is a web design and development studio in Nepal. We bring strategy, content, UX and code together to build fast, distinctive websites that earn trust and generate enquiries.",
+      "description": "We build the digital systems behind growth: clear websites, practical CRM workflows and AI agents that help teams respond faster and follow through.",
       "primaryLabel": "Start a project",
       "primaryUrl": "/contact",
       "secondaryLabel": "View our work",
       "secondaryUrl": "/work",
       "deviceImage": "assets/codecrafts-device-hero-light.png",
-      "deviceAlt": "Responsive CodeCrafts website projects displayed on a laptop and phone"
+      "deviceAlt": "Responsive CodeCraft website projects displayed on a laptop and phone"
     },
     "clients": {
       "label": "Selected clients",
@@ -134,12 +134,14 @@
     "intro": {
       "titleMain": "Website strategy.",
       "titleAccent": "Design to launch.",
-      "description": "Start with clear direction, commission a complete responsive website or improve what is already live. One accountable team carries the business goal from first decision through launch."
+      "description": "From the website customers see to the CRM and AI workflows behind it, we connect strategy, design and technology into one accountable system."
     },
     "items": [
       {"id": "direction", "title": "Find the right direction.", "description": "For businesses that need a stronger website but want the audience, message and priorities resolved before design begins.", "bullets": ["Business, competitor and audience discovery", "Positioning and message hierarchy", "User journeys and website architecture", "Prioritised content and conversion plan"]},
       {"id": "complete-website", "title": "Build the whole experience.", "description": "A complete web design and development engagement connecting strategy, content, UX, technology and launch.", "bullets": ["Creative direction and accessible interface design", "Fast, responsive web development", "CMS or e-commerce integration", "Technical SEO, testing, launch and handover"]},
-      {"id": "after-launch", "title": "Improve what is live.", "description": "Focused improvements for an existing website that needs to perform better as the business and its customers evolve.", "bullets": ["Analytics and user-journey review", "Conversion and content improvements", "Performance, SEO and accessibility checks", "Ongoing development and maintenance"]}
+      {"id": "after-launch", "title": "Improve what is live.", "description": "Focused improvements for an existing website that needs to perform better as the business and its customers evolve.", "bullets": ["Analytics and user-journey review", "Conversion and content improvements", "Performance, SEO and accessibility checks", "Ongoing development and maintenance"]},
+      {"id": "crm-systems", "title": "Connect the work behind the website.", "description": "Lightweight CRM systems that keep leads, projects and follow-ups moving without spreadsheet sprawl.", "bullets": ["Lead capture and pipeline design", "Contact, project and follow-up workflows", "Email, calendar and form integrations", "Team permissions, reporting and handover"]},
+      {"id": "ai-agents", "title": "Put repetitive work on autopilot.", "description": "Practical AI agents for enquiries, calls and internal workflows—with a clear human handoff when judgment matters.", "bullets": ["Website and WhatsApp enquiry agents", "Voice agents for inbound calls", "Lead qualification and appointment booking", "Monitoring, refinement and safe escalation"]}
     ],
     "fit": {
       "title": "You need a useful business tool - not decoration.",
@@ -149,13 +151,15 @@
     },
     "faq": {
       "title": "Before we begin.",
-      "description": "Useful answers to the questions that usually shape a website engagement.",
+      "description": "Useful answers to the questions that shape a website, CRM or automation engagement.",
       "items": [
         {"question": "What does a website project include?", "answer": "A complete engagement can include strategy, content direction, UX and interface design, responsive development, technical SEO, testing, launch and handover. We agree the exact scope before work begins."},
         {"question": "How long does a project take?", "answer": "Timing depends on scope, content and feedback. After the initial review, we provide a practical schedule with clear decision points rather than an arbitrary promise."},
         {"question": "Can you improve an existing website?", "answer": "Yes. We can review the current experience, identify the most valuable improvements and work with what is already useful instead of rebuilding by default."},
-        {"question": "Do you work with clients outside Nepal?", "answer": "Yes. CodeCrafts is based in Nepal and works remotely with businesses worldwide through direct calls, shared reviews and documented decisions."},
-        {"question": "What do you need from us to start?", "answer": "Bring the business goal, the current problem and any useful customer context. You do not need a polished brief; defining the right brief is part of the work."}
+        {"question": "Do you work with clients outside Nepal?", "answer": "Yes. CodeCraft is based in Nepal and works remotely with businesses worldwide through direct calls, shared reviews and documented decisions."},
+        {"question": "What do you need from us to start?", "answer": "Bring the business goal, the current problem and any useful customer context. You do not need a polished brief; defining the right brief is part of the work."},
+        {"question": "Can you connect a CRM to our website?", "answer": "Yes. We can map your lead journey, connect forms and enquiries to a CRM, and create a workflow your team can actually maintain."},
+        {"question": "What can an AI agent safely handle?", "answer": "A focused agent can answer approved questions, qualify enquiries, collect details, book appointments and hand off to a person when the request needs judgment or care."}
       ]
     }
   },
@@ -163,7 +167,7 @@
     "intro": {
       "titleMain": "Small by design.",
       "titleAccent": "Direct by default.",
-      "description": "CodeCrafts is an independent web design and development studio in Nepal, working with growing businesses locally and worldwide. Strategy, UX and code stay with one accountable team."
+      "description": "CodeCraft is an independent web design and development studio in Nepal, working with growing businesses locally and worldwide. Strategy, UX and code stay with one accountable team."
     },
     "statement": "The people learning how your business works are the same people shaping the message, designing the experience and building the website.",
     "values": [
@@ -180,7 +184,7 @@
     "title": "What should your website do better?",
     "description": "Tell us about the business goal, the current website and what customers should find easier. Whether you need clearer direction, a complete responsive build or focused improvements, you do not need a finished brief to begin.",
     "email": "hello@codecrafts.studio",
-    "serviceOptions": ["Website clarity review", "Website direction", "Complete website", "E-commerce", "After-launch improvements"],
+    "serviceOptions": ["Website clarity review", "Website direction", "Complete website", "CRM system", "AI agent or automation", "E-commerce", "After-launch improvements"],
     "submitLabel": "Send website details"
   }
 }
