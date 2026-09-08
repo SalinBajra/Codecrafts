@@ -6,25 +6,25 @@
     "email": "hello@codecrafts.studio",
     "headerCtaLabel": "Start a project",
     "headerCtaUrl": "/contact",
-    "footerLineOne": "Web design & development studio.",
+    "footerLineOne": "IT services & digital solutions company.",
     "footerLineTwo": "Based in Nepal. Working worldwide."
   },
   "seo": {
     "home": {
-      "title": "CodeCraft | Web Design and Development Studio in Nepal",
-      "description": "CodeCraft is a web design and development studio in Nepal building distinctive, high-performing websites for growing businesses."
+      "title": "CodeCraft | IT Services and Digital Solutions Company",
+      "description": "CodeCraft is an IT services and digital solutions company helping growing businesses improve their websites, systems and day-to-day operations."
     },
     "work": {
-      "title": "Web Design Work | CodeCraft Nepal",
-      "description": "Explore responsive websites designed and developed by CodeCraft for creative production, logistics and fashion retail businesses."
+      "title": "IT Services and Digital Solutions | CodeCraft",
+      "description": "Explore digital solutions from CodeCraft, including websites, business systems, automation and practical technology support."
     },
     "services": {
-      "title": "Websites, CRM Systems and AI Automation | CodeCraft",
-      "description": "CodeCraft connects websites, CRM systems and practical AI automation so growing businesses can attract, manage and serve customers better."
+      "title": "IT Services, Websites and Automation | CodeCraft",
+      "description": "CodeCraft provides practical IT services, websites, business systems and automation for growing businesses."
     },
     "about": {
       "title": "About CodeCraft | Independent Web Studio in Nepal",
-      "description": "Meet CodeCraft, an independent web design and development studio in Nepal working with businesses locally and worldwide."
+      "description": "Meet CodeCraft, an IT services and digital solutions company based in Nepal and working with businesses worldwide."
     },
     "contact": {
       "title": "Start a Website Project | CodeCraft",
@@ -33,9 +33,9 @@
   },
   "home": {
     "hero": {
-      "titleMain": "Websites built for",
+      "titleMain": "IT solutions built for",
       "titleAccent": "business growth.",
-      "description": "We build the digital systems behind growth: clear websites, practical CRM workflows and AI agents that help teams respond faster and follow through.",
+      "description": "We provide practical IT services and digital solutions that help businesses work better, serve customers faster and grow with confidence.",
       "primaryLabel": "Start a project",
       "primaryUrl": "/contact",
       "secondaryLabel": "View our work",
