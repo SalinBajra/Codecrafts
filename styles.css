@@ -1710,6 +1710,16 @@ html[data-theme="dark"] .approved-hero + .client-rail>p{color:#b9b5c6}
   .approved-hero + .client-rail .client-geeta .client-logo{width:44px;height:44px}
 }
 
+/* Final typography pass: one calm reading system across the public site. */
+body,h1,h2,h3,h4,p,a,button,input,select,textarea{font-family:"Manrope Variable",Inter,Aptos,Arial,sans-serif}
+h1,h2,h3{font-weight:700;letter-spacing:-.055em}
+em,.approved-hero h1 em,.page-intro h1 em,.featured-services-heading h2 em,.closing h2 em{font-family:inherit;font-style:normal;font-weight:650;color:var(--violet)}
+.approved-hero h1 span,.approved-hero h1 em{font-family:inherit;letter-spacing:-.07em}
+.page-intro h1,.approved-hero h1{line-height:.94}
+.page-intro>p:last-child,.approved-intro{max-width:620px;font-size:clamp(17px,1.5vw,21px);line-height:1.65;color:var(--muted)}
+.eyebrow,.featured-services-heading>span,.featured-service-kicker{letter-spacing:.04em;text-transform:none}
+.detail-list h2,.featured-service h2,.goal-grid h3,.engagement-card h3{font-weight:680}
+
 /* Homepage brand typography and deterministic CTA icons. */
 .approved-hero h1{
   font-family:"Manrope Variable",Inter,Aptos,Arial,sans-serif;

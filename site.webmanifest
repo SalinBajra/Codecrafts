@@ -1,7 +1,7 @@
 {
-  "name": "CodeCrafts",
-  "short_name": "CodeCrafts",
-  "description": "Web design and development studio based in Nepal.",
+  "name": "CodeCraft",
+  "short_name": "CodeCraft",
+  "description": "IT services and digital solutions company based in Nepal.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#f6f5f2",
