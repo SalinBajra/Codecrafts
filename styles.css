@@ -1730,6 +1730,18 @@ em,.approved-hero h1 em,.page-intro h1 em,.featured-services-heading h2 em,.clos
 .contact-copy>a.external-link:before{content:"";width:20px;height:14px;border:1.8px solid currentColor;border-radius:3px;background:linear-gradient(145deg,transparent 48%,currentColor 49%,currentColor 53%,transparent 54%),linear-gradient(215deg,transparent 48%,currentColor 49%,currentColor 53%,transparent 54%);background-size:50% 100%,50% 100%;background-position:left top,right top;background-repeat:no-repeat}
 .contact-copy>a.external-link:after{content:"info@madebycodecraft.com\A sales@madebycodecraft.com";position:absolute;z-index:5;left:0;top:calc(100% + 12px);padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);box-shadow:0 12px 30px rgba(15,15,20,.12);color:var(--ink);font-size:14px;font-weight:650;line-height:1.7;white-space:pre;opacity:0;pointer-events:none;transform:translateY(-5px);transition:opacity .2s,transform .2s}
 .contact-copy>a.external-link:hover:after,.contact-copy>a.external-link:focus-visible:after{opacity:1;transform:none}
+.contact-direct-emails{display:grid;gap:8px;margin-top:30px}
+.contact-direct-emails a{width:max-content;color:var(--ink);font-size:clamp(18px,2vw,24px);font-weight:750;border-bottom:1px solid var(--ink);padding-bottom:4px}
+.contact-direct-emails a:hover{color:var(--violet);border-color:var(--violet)}
+.footer-email-menu{position:relative;z-index:20;grid-column:1/-1;justify-self:start;align-self:start}
+.footer-email-trigger{display:grid;place-items:center;width:52px;height:52px;border:1px solid #484850;border-radius:50%;background:transparent;color:#fff;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.footer-email-trigger span{position:relative;width:20px;height:14px;border:1.7px solid currentColor;border-radius:3px;background:linear-gradient(145deg,transparent 48%,currentColor 49%,currentColor 53%,transparent 54%),linear-gradient(215deg,transparent 48%,currentColor 49%,currentColor 53%,transparent 54%);background-size:50% 100%,50% 100%;background-position:left top,right top;background-repeat:no-repeat}
+.footer-email-trigger:hover,.footer-email-trigger:focus-visible,.footer-email-menu.open .footer-email-trigger{background:#fff;color:var(--ink);border-color:#fff;transform:translateY(-2px)}
+.footer-email-options{position:absolute;left:0;bottom:calc(100% + 12px);display:grid;min-width:250px;padding:8px;border:1px solid #383840;border-radius:8px;background:#111116;box-shadow:0 16px 36px rgba(0,0,0,.28);opacity:0;pointer-events:none;transform:translateY(5px);transition:opacity .2s,transform .2s}
+.footer-email-menu:hover .footer-email-options,.footer-email-menu:focus-within .footer-email-options,.footer-email-menu.open .footer-email-options{opacity:1;pointer-events:auto;transform:none}
+.footer-email-options a{padding:10px 12px;border-radius:5px;color:#fff;font-size:14px;font-weight:650}
+.footer-email-options a:hover,.footer-email-options a:focus-visible{background:#292933;color:#b7a5ff}
+@media(max-width:720px){.footer-email-menu{grid-column:auto}.footer-email-options{bottom:auto;top:calc(100% + 12px)}}
 .detail-list h2,.featured-service h2,.goal-grid h3,.engagement-card h3{font-weight:680}
 
 /* Homepage brand typography and deterministic CTA icons. */
